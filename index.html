@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loveworld International USA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="#">
+                        <img src="https://via.placeholder.com/150x50" alt="Loveworld International Logo" id="logo-image">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-links">
+                        <li><a href="#" data-i18n="nav.ourStory">Our Story</a></li>
+                        <li><a href="#" data-i18n="nav.ourBeliefs">Our Beliefs</a></li>
+                        <li><a href="#" data-i18n="nav.ourLeadership">Our Leadership</a></li>
+                        <li><a href="#" data-i18n="nav.give">Give</a></li>
+                        <li><a href="#" data-i18n="nav.locations">Locations</a></li>
+                    </ul>
+                </nav>
+                <div class="nav-controls">
+                    <button class="upcoming-events-btn" data-i18n="nav.upcomingEvents">UPCOMING EVENTS</button>
+                    <div class="mobile-menu-toggle" id="nav-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Expanded Navigation Menu (Hidden by Default) -->
+    <div class="expanded-nav" id="expanded-nav">
+        <div class="expanded-nav-content">
+            <div class="expanded-nav-header">
+                <div class="logo-search-container">
+                    <a href="#" class="expanded-nav-logo">
+                        <img src="https://via.placeholder.com/40x40" alt="Loveworld Logo">
+                    </a>
+                    <div class="expanded-nav-search">
+                        <input type="text" placeholder="Search Loveworld">
+                    </div>
+                </div>
+                <div class="expanded-nav-top-links">
+                    <a href="#" data-i18n="nav.ourStory">OUR STORY</a>
+                    <a href="#" data-i18n="nav.ourBeliefs">OUR BELIEFS</a>
+                    <a href="#" data-i18n="nav.ourLeadership">OUR LEADERSHIP</a>
+                    <a href="#" data-i18n="nav.give">GIVE</a>
+                </div>
+                <div class="expanded-nav-close">
+                    <button id="nav-close">
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="expanded-nav-upcoming">
+                <a href="#" data-i18n="nav.upcomingEvents">UPCOMING EVENTS</a>
+            </div>
+
+            <div class="expanded-nav-sections">
+                <div class="expanded-nav-section">
+                    <h3>Who We Are</h3>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Our Beliefs</a></li>
+                        <li><a href="#">Our Leadership</a></li>
+                        <li><a href="#">Give</a></li>
+                    </ul>
+                </div>
+                
+                <div class="expanded-nav-section">
+                    <h3>Your Next Step</h3>
+                    <ul>
+                        <li><a href="#">Find Community</a></li>
+                        <li><a href="#">Become a Door Holder</a></li>
+                        <li><a href="#">Serve Our City</a></li>
+                        <li><a href="#">Welcome to Church</a></li>
+                    </ul>
+                </div>
+                
+                <div class="expanded-nav-section">
+                    <h3>The Loveworld Movement</h3>
+                    <ul>
+                        <li><a href="#">Loveworld Conferences</a></li>
+                        <li><a href="#">Loveworld Records</a></li>
+                        <li><a href="#">Loveworld Equip</a></li>
+                        <li><a href="#">Loveworld Publishing</a></li>
+                        <li><a href="#">Loveworld Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="expanded-nav-featured">
+                <div class="featured-image">
+                    <img src="https://via.placeholder.com/400x300" alt="Featured Content">
+                </div>
+                <div class="featured-content">
+                    <h4>CORE — Bible Study Methods</h4>
+                    <p class="featured-date">02.25.25</p>
+                </div>
+                <div class="expanded-nav-social">
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-background">
+            <div class="video-container">
+                <div id="youtube-player"></div>
+                <div class="overlay"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-location">
+                <h2 class="location-title">Located at Loveworld Auditorium</h2>
+            </div>
+            <div class="hero-events">
+                <h3 class="upcoming-gatherings">Upcoming gatherings</h3>
+                <div class="gathering-times">
+                    <div class="gathering-time">SUNDAYS 9:30A</div>
+                    <div class="gathering-time">SUNDAYS 11:30A</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About/Welcome Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="about.title">WHO WE ARE</h2>
+            <div class="about-content">
+                <p class="about-text" data-i18n="about.description">
+                    Loveworld International is a <span class="highlight">vibrant community centered on Christ's love</span>. 
+                    We are dedicated to sharing the message of God's grace and transforming lives through 
+                    the power of His word. Our mission is to bring people into a meaningful relationship with 
+                    Jesus and create a global impact through love and service.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What to Expect Section -->
+    <section class="what-to-expect-section">
+        <div class="container">
+            <div class="section-header">
+                <p class="subtitle">SUNDAY MORNING</p>
+                <h2 class="section-title">WHAT TO EXPECT</h2>
+            </div>
+            <div class="expect-cards">
+                <div class="expect-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Getting Here">
+                    <h3>GETTING HERE</h3>
+                    <p>We are located in the heart of the city. Street parking is free on Sundays, and our parking deck is located just a couple blocks away.</p>
+                </div>
+                <div class="expect-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Gathering Details">
+                    <h3>GATHERING DETAILS</h3>
+                    <p>Sunday gatherings are a space for you and your family to join in the fellowship of the people of God, be enriched by the teachings of the Word of God, and lift your voices in joyful song.</p>
+                </div>
+                <div class="expect-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Family Ministries">
+                    <h3>FAMILY MINISTRIES</h3>
+                    <p>Our family ministries on Sundays are located just a few doors down from the main auditorium. We have a place for children ages 6 weeks through 5th grade during both morning gatherings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Stream Section -->
+    <section id="livestream" class="livestream-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="livestream.title">JOIN OUR LIVE SERVICE</h2>
+            <div class="stream-status" id="stream-status">
+                <p data-i18n="livestream.status">Streaming live every Sunday at 10:00 AM</p>
+            </div>
+            <div class="video-player-container">
+                <div class="video-player">
+                    <iframe id="livestream-player" src="https://www.youtube.com/embed/live_stream?channel=UC-A9RzmUesOcj5_PBqDmXkg" 
+                            frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ministries/Next Steps Section -->
+    <section class="next-steps-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="nextSteps.title">NEXT STEPS</h2>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="card-title" data-i18n="nextSteps.cards.ministries.title">OUR MINISTRIES</h3>
+                    <p class="card-text" data-i18n="nextSteps.cards.ministries.description">
+                        Discover how you can grow in your faith and connect with others.
+                    </p>
+                    <a href="#" class="card-link" data-i18n="nextSteps.learnMore">Learn More</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3 class="card-title" data-i18n="nextSteps.cards.events.title">UPCOMING EVENTS</h3>
+                    <p class="card-text" data-i18n="nextSteps.cards.events.description">
+                        Join us for special gatherings, worship nights, and community events.
+                    </p>
+                    <a href="#" class="card-link" data-i18n="nextSteps.learnMore">Learn More</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="card-title" data-i18n="nextSteps.cards.getInvolved.title">GET INVOLVED</h3>
+                    <p class="card-text" data-i18n="nextSteps.cards.getInvolved.description">
+                        Find out how you can serve and make a difference in our community.
+                    </p>
+                    <a href="#" class="card-link" data-i18n="nextSteps.learnMore">Learn More</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="card-title" data-i18n="nextSteps.cards.contact.title">CONTACT US</h3>
+                    <p class="card-text" data-i18n="nextSteps.cards.contact.description">
+                        Reach out to us with questions, prayer requests, or to share your story.
+                    </p>
+                    <a href="#" class="card-link" data-i18n="nextSteps.learnMore">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-i18n="footer.stayUpdated">STAY UP TO DATE WITH LOVEWORLD</h3>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Email address" aria-label="Email address">
+                        <button type="submit" data-i18n="footer.submit">SUBMIT</button>
+                    </form>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="footer.ourHouse">OUR HOUSE</h3>
+                    <ul>
+                        <li><a href="#" data-i18n="footer.ourStory">Our Story</a></li>
+                        <li><a href="#" data-i18n="footer.ourBeliefs">Our Beliefs</a></li>
+                        <li><a href="#" data-i18n="footer.ourLeadership">Our Leadership</a></li>
+                        <li><a href="#" data-i18n="footer.joinTeam">Join Our Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="footer.locations">LOCATIONS</h3>
+                    <ul>
+                        <li><a href="#">Houston</a></li>
+                        <li><a href="#">Dallas</a></li>
+                        <li><a href="#">New York</a></li>
+                        <li><a href="#">Los Angeles</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="footer.loveworldMovement">THE LOVEWORLD MOVEMENT</h3>
+                    <ul>
+                        <li><a href="#" data-i18n="footer.conferences">Loveworld Conferences</a></li>
+                        <li><a href="#" data-i18n="footer.records">Loveworld Records</a></li>
+                        <li><a href="#" data-i18n="footer.equip">Loveworld Equip</a></li>
+                        <li><a href="#" data-i18n="footer.resources">Loveworld Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-logo">
+                    <h2>LOVEWORLD INTERNATIONAL USA</h2>
+                </div>
+                <div class="footer-legal">
+                    <p>&copy; 2025 Loveworld International</p>
+                    <ul class="legal-links">
+                        <li><a href="#" data-i18n="footer.cookiePolicy">Cookie Policy</a></li>
+                        <li><a href="#" data-i18n="footer.terms">Terms + Conditions</a></li>
+                        <li><a href="#" data-i18n="footer.smsTerms">SMS Terms + Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Language Selector (Hidden for now, will be accessed from mobile menu) -->
+    <div class="language-selector-container" style="display: none;">
+        <div class="selected-language">
+            <i class="fas fa-globe"></i>
+            <span id="current-language">EN</span>
+        </div>
+        <div class="language-dropdown">
+            <a href="#" data-lang="en">English</a>
+            <a href="#" data-lang="fr">Français</a>
+            <a href="#" data-lang="es">Español</a>
+        </div>
+    </div>
+
+    <!-- YouTube API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        // YouTube Player API initialization
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtube-player', {
+                videoId: 'gxZh5t6rN9E', // The video ID from the URL
+                playerVars: {
+                    autoplay: 1,
+                    loop: 1,
+                    mute: 1,
+                    controls: 0,
+                    showinfo: 0,
+                    modestbranding: 1,
+                    playsinline: 1,
+                    rel: 0,
+                    playlist: 'gxZh5t6rN9E' // Required for looping
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.playVideo();
+            // Resize to cover the container
+            resizePlayer();
+            window.addEventListener('resize', resizePlayer);
+        }
+
+        function onPlayerStateChange(event) {
+            // Restart the video if it has ended
+            if (event.data === YT.PlayerState.ENDED) {
+                player.playVideo();
+            }
+        }
+
+        function resizePlayer() {
+            var container = document.querySelector('.video-container');
+            if (container && player) {
+                var width = container.offsetWidth;
+                var height = container.offsetHeight;
+                var ratio = 16/9;
+                
+                var newWidth, newHeight;
+                
+                // Calculate dimensions to maintain aspect ratio and cover
+                if (width / height > ratio) {
+                    newWidth = width;
+                    newHeight = width / ratio;
+                } else {
+                    newHeight = height;
+                    newWidth = height * ratio;
+                }
+                
+                // Center the video
+                if (player.setSize) {
+                    player.setSize(newWidth, newHeight);
+                    document.getElementById('youtube-player').style.marginLeft = ((width - newWidth) / 2) + 'px';
+                    document.getElementById('youtube-player').style.marginTop = ((height - newHeight) / 2) + 'px';
+                }
+            }
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
