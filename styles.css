@@ -126,7 +126,7 @@ ul {
     overflow: hidden;
     display: flex;
     align-items: center;
-    background-image: url('img/hero.jpg');
+    background-image: url('img/love-world.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -1181,7 +1181,7 @@ footer {
     overflow: hidden;
     position: relative;
     background-color: #111;
-    background-image: url('/api/placeholder/1600/800');
+    background-image: url('img/ls.jpg');
     background-size: cover;
     background-position: center;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
