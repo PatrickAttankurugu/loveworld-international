@@ -1,0 +1,191 @@
+{
+    "navigation": {
+      "ourStory": "Our Story",
+      "ourBeliefs": "Our Beliefs",
+      "ourLeadership": "Our Leadership",
+      "give": "Give",
+      "locations": "Locations",
+      "upcomingEvents": "UPCOMING EVENTS"
+    },
+    "breadcrumb": {
+      "lw": "LW",
+      "usa": "USA"
+    },
+    "heroSection": {
+      "located": "Located at The Life Center",
+      "address": "123 Faith Avenue, New York, NY 10001",
+      "upcomingGatherings": "Upcoming gatherings",
+      "serviceTime1": "SUNDAYS 9:30AM",
+      "serviceTime2": "SUNDAYS 11:30AM"
+    },
+    "whatToExpect": {
+      "sectionTitle": "What to Expect",
+      "gettingHere": {
+        "title": "Getting Here",
+        "description": "We are located in the heart of New York, street parking is free on Sundays, and our parking deck is located just a couple blocks away at the Central Plaza Garage on Main St. The parking deck is open from 8a-3p on Sundays."
+      },
+      "gatheringDetails": {
+        "title": "Gathering Details",
+        "description": "Sunday gatherings are a space for you and your family to join in the fellowship of the people of God, be enriched by the teachings of the Word of God, and lift your voices in joyful song to the praises of God. We gather at 9:30a and 11:30a every Sunday at The Life Center."
+      },
+      "familyMinistries": {
+        "title": "Family Ministries",
+        "description": "Our family ministries on Sundays are located just a few doors down from The Life Center at 123 Faith St. We have a place for children ages 6 weeks through 5th grade during both morning gatherings. Middle and high school students meet during the 11:30a gathering only."
+      }
+    },
+    "livestream": {
+      "status": {
+        "live": "LIVE NOW",
+        "upcoming": "UPCOMING"
+      },
+      "title": "Join Our Live Service",
+      "subtitle": "Worship with us from anywhere in the world",
+      "serviceBeginsMessage": "Our Service Begins Soon",
+      "nextStream": "Next stream",
+      "setReminder": "Set Reminder",
+      "serviceTitle": "Sunday Worship Service",
+      "serviceDescription": "Join Pastor David for our weekly worship service as we dive into God's Word together.",
+      "watchOnYoutube": "Watch on YouTube",
+      "watchOnFacebook": "Watch on Facebook",
+      "share": "Share",
+      "upcomingStreams": "Upcoming Livestreams"
+    },
+    "reminder": {
+      "title": "Set a Reminder",
+      "message": "We'll remind you when we go live!",
+      "emailLabel": "Email address",
+      "emailPlaceholder": "Your email",
+      "phoneLabel": "Phone number (optional)",
+      "phonePlaceholder": "For SMS reminders",
+      "reminderOptions": {
+        "10min": "10 minutes before",
+        "30min": "30 minutes before",
+        "60min": "1 hour before"
+      },
+      "submitButton": "Set Reminder"
+    },
+    "shareModal": {
+      "title": "Share This Stream",
+      "message": "Share our livestream with your friends and family!",
+      "copyButton": "Copy"
+    },
+    "allAges": {
+      "sectionTitle": "All Ages",
+      "littleStars": {
+        "title": "Little Stars",
+        "ageRange": "6 Weeks - Pre-K",
+        "description": "We've designed our environment very intentionally to allow worship and teaching to come alive for even the tiniest in our House. Each child is assigned to a bloom room based on either age or stage of development.",
+        "learnMore": "LEARN MORE"
+      },
+      "loveWorldKids": {
+        "title": "Love World Kids",
+        "ageRange": "K - 5th Grade",
+        "description": "We want to lean in with families who are raising a generation of children to know and walk in a relationship with Jesus. Each child is assigned to a boys or girls-based tent grouped by their grade.",
+        "learnMore": "LEARN MORE"
+      },
+      "loveWorldYouth": {
+        "title": "Love World Youth",
+        "ageRange": "6th - 12th Grade",
+        "description": "We exist to awaken and inspire a generation of middle and high school students to live their lives for the fame and renown of Jesus. Love World Youth meets on Sundays during the 11:30a gathering only.",
+        "learnMore": "LEARN MORE"
+      }
+    },
+    "upcomingEvents": {
+      "sectionTitle": "Upcoming Events",
+      "search": "Search",
+      "searchPlaceholder": "KEYWORD",
+      "filterBy": "Filter By",
+      "locationDefault": "NEW YORK",
+      "locations": {
+        "brooklyn": "BROOKLYN",
+        "manhattan": "MANHATTAN",
+        "queens": "QUEENS"
+      },
+      "campusDefault": "ALL CAMPUSES",
+      "campuses": {
+        "main": "MAIN CAMPUS",
+        "east": "EAST CAMPUS",
+        "west": "WEST CAMPUS"
+      },
+      "ministryDefault": "MINISTRY",
+      "ministries": {
+        "worship": "WORSHIP",
+        "outreach": "OUTREACH",
+        "prayer": "PRAYER",
+        "youth": "YOUTH"
+      },
+      "events": {
+        "communityConnectManhattan": {
+          "title": "Community Connect (Manhattan)",
+          "time": "7:00pm - 9:00pm ET",
+          "description": "Connect with neighbors and build lasting relationships in your local community!",
+          "tags": {
+            "fellowship": "FELLOWSHIP",
+            "newYork": "NEW YORK"
+          }
+        },
+        "communityConnectBrooklyn": {
+          "title": "Community Connect (Brooklyn)",
+          "time": "7:00pm - 9:00pm ET",
+          "description": "Connect with neighbors and build lasting relationships in your local community!",
+          "tags": {
+            "fellowship": "FELLOWSHIP",
+            "newYork": "NEW YORK"
+          }
+        },
+        "youngAdultsGathering": {
+          "title": "Young Adults Gathering",
+          "time": "7:30pm - 9:30pm ET",
+          "description": "If you're a student or young professional in the city, this evening is just for you!",
+          "tags": {
+            "youngAdults": "YOUNG ADULTS",
+            "newYork": "NEW YORK"
+          }
+        }
+      }
+    },
+    "joinUs": {
+      "subtitle": "Become a Light Bearer",
+      "title": "Get Involved",
+      "description": "We say Light Bearers instead of volunteers because volunteers can sound like people who randomly sign up and hopefully show up, while Light Bearers take ownership and take great pleasure in opening a way for others to see and experience Jesus. If you're ready to start serving and help make a way for people to experience Jesus, we'd love for you to sign up to be a Light Bearer!",
+      "button": "Learn More and Apply"
+    },
+    "footer": {
+      "ourHouse": {
+        "title": "Our House",
+        "links": {
+          "ourStory": "Our Story",
+          "ourBeliefs": "Our Beliefs",
+          "ourLeadership": "Our Leadership",
+          "joinOurTeam": "Join Our Team"
+        }
+      },
+      "locations": {
+        "title": "Locations",
+        "links": {
+          "515": "515",
+          "cumberland": "Cumberland",
+          "trilith": "Trilith",
+          "washingtonDC": "Washington, DC"
+        }
+      },
+      "loveWorldMovement": {
+        "title": "The Love World Movement",
+        "links": {
+          "conferences": "Love World Conferences",
+          "records": "Love World Records",
+          "equip": "Love World Equip",
+          "publishing": "Love World Publishing",
+          "resources": "Love World Resources"
+        }
+      },
+      "copyright": "© 2025 Love World International USA",
+      "legal": {
+        "cookiePolicy": "Cookie Policy",
+        "termsConditions": "Terms + Conditions",
+        "smsTerms": "SMS Terms + Conditions",
+        "georgiaFilm": "Georgia Film"
+      },
+      "backgroundText": "love world international"
+    }
+  }

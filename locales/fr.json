@@ -1,0 +1,191 @@
+{
+    "navigation": {
+      "ourStory": "Notre Histoire",
+      "ourBeliefs": "Nos Croyances",
+      "ourLeadership": "Notre Leadership",
+      "give": "Donner",
+      "locations": "Emplacements",
+      "upcomingEvents": "ÉVÉNEMENTS À VENIR"
+    },
+    "breadcrumb": {
+      "lw": "LW",
+      "usa": "USA"
+    },
+    "heroSection": {
+      "located": "Situé au Centre de Vie",
+      "address": "123 Avenue de la Foi, New York, NY 10001",
+      "upcomingGatherings": "Prochaines réunions",
+      "serviceTime1": "DIMANCHES 9:30AM",
+      "serviceTime2": "DIMANCHES 11:30AM"
+    },
+    "whatToExpect": {
+      "sectionTitle": "À Quoi S'attendre",
+      "gettingHere": {
+        "title": "Comment Venir",
+        "description": "Nous sommes situés au cœur de New York, le stationnement dans la rue est gratuit le dimanche, et notre parking se trouve à quelques pâtés de maisons au Central Plaza Garage sur Main St. Le parking est ouvert de 8h à 15h le dimanche."
+      },
+      "gatheringDetails": {
+        "title": "Détails des Rassemblements",
+        "description": "Les rassemblements du dimanche sont un espace pour vous et votre famille pour rejoindre la communion du peuple de Dieu, être enrichis par les enseignements de la Parole de Dieu, et élever vos voix en chants joyeux aux louanges de Dieu. Nous nous réunissons à 9h30 et 11h30 tous les dimanches au Centre de Vie."
+      },
+      "familyMinistries": {
+        "title": "Ministères Familiaux",
+        "description": "Nos ministères familiaux du dimanche sont situés à quelques portes du Centre de Vie au 123 rue de la Foi. Nous avons un espace pour les enfants de 6 semaines jusqu'à la 5ème année pendant les deux rassemblements du matin. Les collégiens et lycéens se réunissent uniquement pendant le rassemblement de 11h30."
+      }
+    },
+    "livestream": {
+      "status": {
+        "live": "EN DIRECT",
+        "upcoming": "À VENIR"
+      },
+      "title": "Rejoignez Notre Service En Direct",
+      "subtitle": "Adorez avec nous depuis n'importe où dans le monde",
+      "serviceBeginsMessage": "Notre Service Commence Bientôt",
+      "nextStream": "Prochain stream",
+      "setReminder": "Définir un Rappel",
+      "serviceTitle": "Service d'Adoration du Dimanche",
+      "serviceDescription": "Rejoignez le Pasteur David pour notre service d'adoration hebdomadaire alors que nous plongeons ensemble dans la Parole de Dieu.",
+      "watchOnYoutube": "Regarder sur YouTube",
+      "watchOnFacebook": "Regarder sur Facebook",
+      "share": "Partager",
+      "upcomingStreams": "Diffusions à Venir"
+    },
+    "reminder": {
+      "title": "Définir un Rappel",
+      "message": "Nous vous rappellerons quand nous serons en direct !",
+      "emailLabel": "Adresse e-mail",
+      "emailPlaceholder": "Votre email",
+      "phoneLabel": "Numéro de téléphone (facultatif)",
+      "phonePlaceholder": "Pour les rappels SMS",
+      "reminderOptions": {
+        "10min": "10 minutes avant",
+        "30min": "30 minutes avant",
+        "60min": "1 heure avant"
+      },
+      "submitButton": "Définir un Rappel"
+    },
+    "shareModal": {
+      "title": "Partager ce Stream",
+      "message": "Partagez notre livestream avec vos amis et votre famille !",
+      "copyButton": "Copier"
+    },
+    "allAges": {
+      "sectionTitle": "Tous les Âges",
+      "littleStars": {
+        "title": "Petites Étoiles",
+        "ageRange": "6 Semaines - Maternelle",
+        "description": "Nous avons conçu notre environnement de manière très intentionnelle pour permettre à l'adoration et à l'enseignement de prendre vie même pour les plus petits de notre Maison. Chaque enfant est assigné à une salle d'épanouissement en fonction de son âge ou de son stade de développement.",
+        "learnMore": "EN SAVOIR PLUS"
+      },
+      "loveWorldKids": {
+        "title": "Enfants Love World",
+        "ageRange": "CP - CM2",
+        "description": "Nous voulons nous engager auprès des familles qui élèvent une génération d'enfants pour connaître et marcher dans une relation avec Jésus. Chaque enfant est assigné à une tente basée sur les garçons ou les filles, regroupés par leur niveau scolaire.",
+        "learnMore": "EN SAVOIR PLUS"
+      },
+      "loveWorldYouth": {
+        "title": "Jeunesse Love World",
+        "ageRange": "6ème - Terminale",
+        "description": "Nous existons pour éveiller et inspirer une génération de collégiens et lycéens à vivre leur vie pour la gloire et la renommée de Jésus. Love World Youth se réunit les dimanches uniquement pendant le rassemblement de 11h30.",
+        "learnMore": "EN SAVOIR PLUS"
+      }
+    },
+    "upcomingEvents": {
+      "sectionTitle": "Événements à Venir",
+      "search": "Rechercher",
+      "searchPlaceholder": "MOT-CLÉ",
+      "filterBy": "Filtrer Par",
+      "locationDefault": "NEW YORK",
+      "locations": {
+        "brooklyn": "BROOKLYN",
+        "manhattan": "MANHATTAN",
+        "queens": "QUEENS"
+      },
+      "campusDefault": "TOUS LES CAMPUS",
+      "campuses": {
+        "main": "CAMPUS PRINCIPAL",
+        "east": "CAMPUS EST",
+        "west": "CAMPUS OUEST"
+      },
+      "ministryDefault": "MINISTÈRE",
+      "ministries": {
+        "worship": "ADORATION",
+        "outreach": "SENSIBILISATION",
+        "prayer": "PRIÈRE",
+        "youth": "JEUNESSE"
+      },
+      "events": {
+        "communityConnectManhattan": {
+          "title": "Connexion Communautaire (Manhattan)",
+          "time": "19h00 - 21h00 ET",
+          "description": "Connectez-vous avec vos voisins et construisez des relations durables dans votre communauté locale !",
+          "tags": {
+            "fellowship": "COMMUNION",
+            "newYork": "NEW YORK"
+          }
+        },
+        "communityConnectBrooklyn": {
+          "title": "Connexion Communautaire (Brooklyn)",
+          "time": "19h00 - 21h00 ET",
+          "description": "Connectez-vous avec vos voisins et construisez des relations durables dans votre communauté locale !",
+          "tags": {
+            "fellowship": "COMMUNION",
+            "newYork": "NEW YORK"
+          }
+        },
+        "youngAdultsGathering": {
+          "title": "Rassemblement des Jeunes Adultes",
+          "time": "19h30 - 21h30 ET",
+          "description": "Si vous êtes étudiant ou jeune professionnel dans la ville, cette soirée est faite pour vous !",
+          "tags": {
+            "youngAdults": "JEUNES ADULTES",
+            "newYork": "NEW YORK"
+          }
+        }
+      }
+    },
+    "joinUs": {
+      "subtitle": "Devenez un Porteur de Lumière",
+      "title": "Impliquez-vous",
+      "description": "Nous disons Porteurs de Lumière au lieu de bénévoles parce que les bénévoles peuvent ressembler à des personnes qui s'inscrivent au hasard et espèrent se présenter, tandis que les Porteurs de Lumière prennent possession et prennent un grand plaisir à ouvrir une voie pour que d'autres voient et expérimentent Jésus. Si vous êtes prêt à commencer à servir et à aider à créer une voie pour que les gens expérimentent Jésus, nous aimerions que vous vous inscriviez pour devenir un Porteur de Lumière !",
+      "button": "En Savoir Plus et S'inscrire"
+    },
+    "footer": {
+      "ourHouse": {
+        "title": "Notre Maison",
+        "links": {
+          "ourStory": "Notre Histoire",
+          "ourBeliefs": "Nos Croyances",
+          "ourLeadership": "Notre Leadership",
+          "joinOurTeam": "Rejoindre Notre Équipe"
+        }
+      },
+      "locations": {
+        "title": "Emplacements",
+        "links": {
+          "515": "515",
+          "cumberland": "Cumberland",
+          "trilith": "Trilith",
+          "washingtonDC": "Washington, DC"
+        }
+      },
+      "loveWorldMovement": {
+        "title": "Le Mouvement Love World",
+        "links": {
+          "conferences": "Conférences Love World",
+          "records": "Records Love World",
+          "equip": "Équipement Love World",
+          "publishing": "Édition Love World",
+          "resources": "Ressources Love World"
+        }
+      },
+      "copyright": "© 2025 Love World International USA",
+      "legal": {
+        "cookiePolicy": "Politique de Cookies",
+        "termsConditions": "Termes + Conditions",
+        "smsTerms": "Termes SMS + Conditions",
+        "georgiaFilm": "Film Géorgie"
+      },
+      "backgroundText": "love world international"
+    }
+  }

@@ -1,701 +1,1012 @@
-// DOM Elements
+// Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Navigation Elements
-    const navToggle = document.getElementById('nav-toggle');
-    const navClose = document.getElementById('nav-close');
-    const expandedNav = document.getElementById('expanded-nav');
-    const header = document.querySelector('.header');
-    
-    // Language Selector
-    const languageOptions = document.querySelectorAll('[data-lang]');
-    const currentLanguageDisplay = document.getElementById('current-language');
-    
-    // Smooth Scroll for Anchor Links
-    const anchorLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
-    
-    // Animation Elements
-    const animatedElements = document.querySelectorAll('.section-title, .about-text, .card, .expect-card');
-    
-    // Video Stream
-    const streamStatus = document.getElementById('stream-status');
-    const livestreamPlayer = document.getElementById('livestream-player');
-    
-    // Translations
-    const translations = {
-        'en': {
-            'nav.ourStory': 'Our Story',
-            'nav.ourBeliefs': 'Our Beliefs',
-            'nav.ourLeadership': 'Our Leadership',
-            'nav.give': 'Give',
-            'nav.locations': 'Locations',
-            'nav.selectLanguage': 'Select Language',
-            'nav.upcomingEvents': 'UPCOMING EVENTS',
-            'nav.findCommunity': 'Find Community',
-            'nav.becomeDoOrHolder': 'Become a Door Holder',
-            'nav.serveOurCity': 'Serve Our City',
-            'nav.welcomeToChurch': 'Welcome to Church',
-            'nav.conferences': 'Loveworld Conferences',
-            'nav.records': 'Loveworld Records',
-            'nav.equip': 'Loveworld Equip',
-            'nav.publishing': 'Loveworld Publishing',
-            'nav.resources': 'Loveworld Resources',
-            
-            'hero.title': 'WELCOME TO LOVEWORLD INTERNATIONAL',
-            'hero.subtitle': 'Experience God\'s Love',
-            'hero.watchLive': 'WATCH LIVE',
-            'hero.learnMore': 'LEARN MORE',
-            
-            'about.title': 'WHO WE ARE',
-            'about.description': 'Loveworld International is a <span class="highlight">vibrant community centered on Christ\'s love</span>. We are dedicated to sharing the message of God\'s grace and transforming lives through the power of His word. Our mission is to bring people into a meaningful relationship with Jesus and create a global impact through love and service.',
-            
-            'livestream.title': 'JOIN OUR LIVE SERVICE',
-            'livestream.status': 'Streaming live every Sunday at 10:00 AM',
-            
-            'nextSteps.title': 'NEXT STEPS',
-            'nextSteps.learnMore': 'Learn More',
-            'nextSteps.cards.ministries.title': 'OUR MINISTRIES',
-            'nextSteps.cards.ministries.description': 'Discover how you can grow in your faith and connect with others.',
-            'nextSteps.cards.events.title': 'UPCOMING EVENTS',
-            'nextSteps.cards.events.description': 'Join us for special gatherings, worship nights, and community events.',
-            'nextSteps.cards.getInvolved.title': 'GET INVOLVED',
-            'nextSteps.cards.getInvolved.description': 'Find out how you can serve and make a difference in our community.',
-            'nextSteps.cards.contact.title': 'CONTACT US',
-            'nextSteps.cards.contact.description': 'Reach out to us with questions, prayer requests, or to share your story.',
-            
-            'footer.stayUpdated': 'STAY UP TO DATE WITH LOVEWORLD',
-            'footer.submit': 'SUBMIT',
-            'footer.ourHouse': 'OUR HOUSE',
-            'footer.ourStory': 'Our Story',
-            'footer.ourBeliefs': 'Our Beliefs',
-            'footer.ourLeadership': 'Our Leadership',
-            'footer.joinTeam': 'Join Our Team',
-            'footer.locations': 'LOCATIONS',
-            'footer.loveworldMovement': 'THE LOVEWORLD MOVEMENT',
-            'footer.conferences': 'Loveworld Conferences',
-            'footer.records': 'Loveworld Records',
-            'footer.equip': 'Loveworld Equip',
-            'footer.resources': 'Loveworld Resources',
-            'footer.cookiePolicy': 'Cookie Policy',
-            'footer.terms': 'Terms + Conditions',
-            'footer.smsTerms': 'SMS Terms + Conditions'
-        },
-        'fr': {
-            'nav.ourStory': 'Notre Histoire',
-            'nav.ourBeliefs': 'Nos Croyances',
-            'nav.ourLeadership': 'Notre Leadership',
-            'nav.give': 'Donner',
-            'nav.locations': 'Emplacements',
-            'nav.selectLanguage': 'Sélectionner la langue',
-            'nav.upcomingEvents': 'ÉVÉNEMENTS À VENIR',
-            'nav.findCommunity': 'Trouver une Communauté',
-            'nav.becomeDoOrHolder': 'Devenir Membre Actif',
-            'nav.serveOurCity': 'Servir Notre Ville',
-            'nav.welcomeToChurch': 'Bienvenue à l\'Église',
-            'nav.conferences': 'Conférences Loveworld',
-            'nav.records': 'Records Loveworld',
-            'nav.equip': 'Loveworld Équipement',
-            'nav.publishing': 'Loveworld Édition',
-            'nav.resources': 'Ressources Loveworld',
-            
-            'hero.title': 'BIENVENUE À LOVEWORLD INTERNATIONAL',
-            'hero.subtitle': 'Découvrez l\'Amour de Dieu',
-            'hero.watchLive': 'REGARDER EN DIRECT',
-            'hero.learnMore': 'EN SAVOIR PLUS',
-            
-            'about.title': 'QUI SOMMES-NOUS',
-            'about.description': 'Loveworld International est une <span class="highlight">communauté dynamique centrée sur l\'amour du Christ</span>. Nous nous consacrons à partager le message de la grâce de Dieu et à transformer des vies par la puissance de Sa parole. Notre mission est d\'amener les gens à une relation significative avec Jésus et de créer un impact mondial par l\'amour et le service.',
-            
-            'livestream.title': 'REJOIGNEZ NOTRE SERVICE EN DIRECT',
-            'livestream.status': 'Diffusion en direct tous les dimanches à 10h00',
-            
-            'nextSteps.title': 'PROCHAINES ÉTAPES',
-            'nextSteps.learnMore': 'En Savoir Plus',
-            'nextSteps.cards.ministries.title': 'NOS MINISTÈRES',
-            'nextSteps.cards.ministries.description': 'Découvrez comment vous pouvez grandir dans votre foi et vous connecter avec les autres.',
-            'nextSteps.cards.events.title': 'ÉVÉNEMENTS À VENIR',
-            'nextSteps.cards.events.description': 'Rejoignez-nous pour des rassemblements spéciaux, des soirées de culte et des événements communautaires.',
-            'nextSteps.cards.getInvolved.title': 'S\'IMPLIQUER',
-            'nextSteps.cards.getInvolved.description': 'Découvrez comment vous pouvez servir et faire une différence dans notre communauté.',
-            'nextSteps.cards.contact.title': 'CONTACTEZ-NOUS',
-            'nextSteps.cards.contact.description': 'Contactez-nous pour des questions, des demandes de prière ou pour partager votre histoire.',
-            
-            'footer.stayUpdated': 'RESTEZ À JOUR AVEC LOVEWORLD',
-            'footer.submit': 'SOUMETTRE',
-            'footer.ourHouse': 'NOTRE MAISON',
-            'footer.ourStory': 'Notre Histoire',
-            'footer.ourBeliefs': 'Nos Croyances',
-            'footer.ourLeadership': 'Notre Leadership',
-            'footer.joinTeam': 'Rejoindre Notre Équipe',
-            'footer.locations': 'EMPLACEMENTS',
-            'footer.loveworldMovement': 'LE MOUVEMENT LOVEWORLD',
-            'footer.conferences': 'Conférences Loveworld',
-            'footer.records': 'Records Loveworld',
-            'footer.equip': 'Loveworld Équipement',
-            'footer.resources': 'Ressources Loveworld',
-            'footer.cookiePolicy': 'Politique de Cookies',
-            'footer.terms': 'Termes + Conditions',
-            'footer.smsTerms': 'Termes + Conditions SMS'
-        },
-        'es': {
-            'nav.ourStory': 'Nuestra Historia',
-            'nav.ourBeliefs': 'Nuestras Creencias',
-            'nav.ourLeadership': 'Nuestro Liderazgo',
-            'nav.give': 'Donar',
-            'nav.locations': 'Ubicaciones',
-            'nav.selectLanguage': 'Seleccionar Idioma',
-            'nav.upcomingEvents': 'PRÓXIMOS EVENTOS',
-            'nav.findCommunity': 'Encontrar Comunidad',
-            'nav.becomeDoOrHolder': 'Convertirse en Colaborador',
-            'nav.serveOurCity': 'Servir a Nuestra Ciudad',
-            'nav.welcomeToChurch': 'Bienvenido a la Iglesia',
-            'nav.conferences': 'Conferencias Loveworld',
-            'nav.records': 'Registros Loveworld',
-            'nav.equip': 'Loveworld Equipo',
-            'nav.publishing': 'Loveworld Publicaciones',
-            'nav.resources': 'Recursos Loveworld',
-            
-            'hero.title': 'BIENVENIDO A LOVEWORLD INTERNATIONAL',
-            'hero.subtitle': 'Experimenta el Amor de Dios',
-            'hero.watchLive': 'VER EN VIVO',
-            'hero.learnMore': 'MÁS INFORMACIÓN',
-            
-            'about.title': 'QUIÉNES SOMOS',
-            'about.description': 'Loveworld International es una <span class="highlight">comunidad vibrante centrada en el amor de Cristo</span>. Nos dedicamos a compartir el mensaje de la gracia de Dios y transformar vidas a través del poder de Su palabra. Nuestra misión es llevar a las personas a una relación significativa con Jesús y crear un impacto global a través del amor y el servicio.',
-            
-            'livestream.title': 'ÚNETE A NUESTRO SERVICIO EN VIVO',
-            'livestream.status': 'Transmisión en vivo todos los domingos a las 10:00 AM',
-            
-            'nextSteps.title': 'PRÓXIMOS PASOS',
-            'nextSteps.learnMore': 'Más Información',
-            'nextSteps.cards.ministries.title': 'NUESTROS MINISTERIOS',
-            'nextSteps.cards.ministries.description': 'Descubre cómo puedes crecer en tu fe y conectarte con otros.',
-            'nextSteps.cards.events.title': 'PRÓXIMOS EVENTOS',
-            'nextSteps.cards.events.description': 'Únete a nosotros para reuniones especiales, noches de adoración y eventos comunitarios.',
-            'nextSteps.cards.getInvolved.title': 'INVOLÚCRATE',
-            'nextSteps.cards.getInvolved.description': 'Descubre cómo puedes servir y marcar la diferencia en nuestra comunidad.',
-            'nextSteps.cards.contact.title': 'CONTÁCTANOS',
-            'nextSteps.cards.contact.description': 'Comunícate con nosotros para preguntas, peticiones de oración o para compartir tu historia.',
-            
-            'footer.stayUpdated': 'MANTENTE AL DÍA CON LOVEWORLD',
-            'footer.submit': 'ENVIAR',
-            'footer.ourHouse': 'NUESTRA CASA',
-            'footer.ourStory': 'Nuestra Historia',
-            'footer.ourBeliefs': 'Nuestras Creencias',
-            'footer.ourLeadership': 'Nuestro Liderazgo',
-            'footer.joinTeam': 'Únete a Nuestro Equipo',
-            'footer.locations': 'UBICACIONES',
-            'footer.loveworldMovement': 'EL MOVIMIENTO LOVEWORLD',
-            'footer.conferences': 'Conferencias Loveworld',
-            'footer.records': 'Registros Loveworld',
-            'footer.equip': 'Loveworld Equipo',
-            'footer.resources': 'Recursos Loveworld',
-            'footer.cookiePolicy': 'Política de Cookies',
-            'footer.terms': 'Términos + Condiciones',
-            'footer.smsTerms': 'Términos + Condiciones SMS'
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.createElement('div');
+    mobileNav.className = 'mobile-nav';
+    mobileNav.innerHTML = `
+        <div class="mobile-nav-container">
+            <div class="mobile-nav-header">
+                <img src="https://via.placeholder.com/150x50" alt="Love World International USA">
+                <button class="close-menu">×</button>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Our Beliefs</a></li>
+                    <li><a href="#">Our Leadership</a></li>
+                    <li><a href="#">Give</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Locations</a></li>
+                    <li><a href="#">Upcoming Events</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(mobileNav);
+
+    // Style for mobile nav (adding these styles via JS since they're specific to this component)
+    const style = document.createElement('style');
+    style.innerHTML = `
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background-color: white;
+            z-index: 1000;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            overflow-y: auto;
         }
-    };
-    
-    // Navigation Toggle
-    if (navToggle) {
-        navToggle.addEventListener('click', function() {
-            expandedNav.classList.add('active');
-            document.body.classList.add('no-scroll');
-            
-            // Add entrance animations to menu items
-            animateMenuItems();
-        });
-    }
-    
-    // Navigation Close
-    if (navClose) {
-        navClose.addEventListener('click', function() {
-            expandedNav.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-        });
-    }
-    
-    // Animate menu items when menu opens
-    function animateMenuItems() {
-        const menuSections = document.querySelectorAll('.expanded-nav-section');
-        const menuHeader = document.querySelector('.expanded-nav-header');
-        const menuUpcoming = document.querySelector('.expanded-nav-upcoming');
-        const menuFeatured = document.querySelector('.expanded-nav-featured');
-        
-        // Reset any existing animations
-        menuSections.forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(20px)';
-        });
-        
-        if (menuHeader) {
-            menuHeader.style.opacity = '0';
-            menuHeader.style.transform = 'translateY(-20px)';
+        .mobile-nav.active {
+            right: 0;
         }
-        
-        if (menuUpcoming) {
-            menuUpcoming.style.opacity = '0';
+        .mobile-nav-container {
+            padding: 20px;
         }
-        
-        if (menuFeatured) {
-            menuFeatured.style.opacity = '0';
-            menuFeatured.style.transform = 'translateY(20px)';
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
         }
-        
-        // Animate in sequence
-        setTimeout(() => {
-            if (menuHeader) {
-                menuHeader.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                menuHeader.style.opacity = '1';
-                menuHeader.style.transform = 'translateY(0)';
-            }
-        }, 100);
-        
-        setTimeout(() => {
-            if (menuUpcoming) {
-                menuUpcoming.style.transition = 'opacity 0.5s ease';
-                menuUpcoming.style.opacity = '1';
-            }
-        }, 300);
-        
-        menuSections.forEach((section, index) => {
-            setTimeout(() => {
-                section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                section.style.opacity = '1';
-                section.style.transform = 'translateY(0)';
-            }, 500 + (index * 150));
-        });
-        
-        setTimeout(() => {
-            if (menuFeatured) {
-                menuFeatured.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                menuFeatured.style.opacity = '1';
-                menuFeatured.style.transform = 'translateY(0)';
-            }
-        }, 900);
-    }
-    
-    // Handle Scroll Effects
-    window.addEventListener('scroll', function() {
-        const scrollPos = window.scrollY;
-        
-        // Header background changes on scroll
-        if (scrollPos > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+        .mobile-nav-header img {
+            height: 30px;
         }
+        .close-menu {
+            background: none;
+            border: none;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        .mobile-nav nav ul {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .mobile-nav nav ul li a {
+            color: #333;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .mobile-social {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        .mobile-social a {
+            font-size: 1.5rem;
+            color: #333;
+        }
+        .overlay-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Create overlay background
+    const overlayBg = document.createElement('div');
+    overlayBg.className = 'overlay-bg';
+    document.body.appendChild(overlayBg);
+
+    // Toggle mobile menu
+    menuToggle.addEventListener('click', function() {
+        mobileNav.classList.add('active');
+        overlayBg.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
     });
-    
-    // Smooth Scroll for Anchor Links
-    anchorLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+
+    // Close mobile menu
+    const closeMenu = document.querySelector('.close-menu');
+    closeMenu.addEventListener('click', closeNav);
+    overlayBg.addEventListener('click', closeNav);
+
+    function closeNav() {
+        mobileNav.classList.remove('active');
+        overlayBg.style.display = 'none';
+        document.body.style.overflow = ''; // Re-enable scrolling
+    }
+
+    // Parallax scrolling effect
+    window.addEventListener('scroll', function() {
+        const parallaxContainers = document.querySelectorAll('.parallax-container');
+        
+        parallaxContainers.forEach(container => {
+            const scrollPosition = window.pageYOffset;
+            const speed = 0.5; // Adjust for desired effect speed
+            
+            // Calculate the new background position
+            const yPos = -(scrollPosition * speed);
+            
+            // Apply the new background position
+            container.style.backgroundPosition = `center ${yPos}px`;
+        });
+    });
+
+    // Smooth Scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
             e.preventDefault();
+            
+            if(this.getAttribute('href') === '#') return;
             
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
             
-            if (targetElement) {
-                // Close expanded nav if open
-                if (expandedNav.classList.contains('active')) {
-                    expandedNav.classList.remove('active');
-                    document.body.classList.remove('no-scroll');
-                }
-                
-                // Calculate offset considering fixed header
-                const headerHeight = header.offsetHeight;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                
-                // Smooth scroll to target
+            if(targetElement) {
                 window.scrollTo({
-                    top: targetPosition,
+                    top: targetElement.offsetTop,
                     behavior: 'smooth'
                 });
+                
+                // Close mobile nav if it's open
+                if(mobileNav.classList.contains('active')) {
+                    closeNav();
+                }
             }
         });
     });
+
+    // Implement preloader
+    const preloader = document.createElement('div');
+    preloader.className = 'preloader';
+    preloader.innerHTML = `
+        <div class="loader"></div>
+    `;
     
-    // Detect Browser Language and Location
-    function detectUserLanguage() {
-        // First try to get from localStorage (if user has set preference before)
-        const savedLanguage = localStorage.getItem('selectedLanguage');
-        if (savedLanguage && translations[savedLanguage]) {
-            return savedLanguage;
+    const preloaderStyle = document.createElement('style');
+    preloaderStyle.innerHTML = `
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
         }
-        
-        // Then try to detect from browser
-        const browserLang = navigator.language || navigator.userLanguage;
-        const shortLang = browserLang.split('-')[0];
-        
-        // Check if we support this language
-        if (translations[shortLang]) {
-            return shortLang;
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #00bcd4;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
         }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    `;
+    document.head.appendChild(preloaderStyle);
+    document.body.prepend(preloader);
+    
+    // Hide preloader when page is loaded
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            preloader.style.opacity = '0';
+            preloader.style.visibility = 'hidden';
+        }, 500);
+    });
+
+    // Scroll reveal animation
+    const scrollElements = document.querySelectorAll('.scroll-reveal');
+    
+    const elementInView = (el, dividend = 1) => {
+        const elementTop = el.getBoundingClientRect().top;
+        return (
+            elementTop <= 
+            (window.innerHeight || document.documentElement.clientHeight) / dividend
+        );
+    };
+    
+    const elementOutOfView = (el) => {
+        const elementTop = el.getBoundingClientRect().top;
+        return (
+            elementTop > 
+            (window.innerHeight || document.documentElement.clientHeight)
+        );
+    };
+    
+    const displayScrollElement = (element) => {
+        element.classList.add('scrolled');
+    };
+    
+    const hideScrollElement = (element) => {
+        element.classList.remove('scrolled');
+    };
+    
+    const handleScrollAnimation = () => {
+        scrollElements.forEach((el) => {
+            if (elementInView(el, 1.25)) {
+                displayScrollElement(el);
+            } else if (elementOutOfView(el)) {
+                hideScrollElement(el);
+            }
+        });
+    };
+    
+    window.addEventListener('scroll', () => {
+        handleScrollAnimation();
+    });
+
+    // Initialize animation on page load
+    handleScrollAnimation();
+});
+// What to Expect Section JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    // Intersection Observer for scroll animations
+    const expectCards = document.querySelectorAll('.expect-card');
+    
+    // Check if IntersectionObserver is supported
+    if ('IntersectionObserver' in window) {
+        const expectObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    expectObserver.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, {
+            root: null, // Use viewport as root
+            threshold: 0.15, // Trigger when 15% of the element is visible
+            rootMargin: '0px 0px -50px 0px' // Adjust the trigger point
+        });
         
-        // Default to English
-        return 'en';
+        // Observe each card
+        expectCards.forEach(card => {
+            expectObserver.observe(card);
+        });
+    } else {
+        // Fallback for browsers that don't support IntersectionObserver
+        expectCards.forEach(card => {
+            card.classList.add('active');
+        });
     }
     
-    // Change Language Function
-    function changeLanguage(langCode) {
-        if (!translations[langCode]) {
-            console.error('Language not supported:', langCode);
+    // Image lazy loading
+    const lazyImages = document.querySelectorAll('.card-img');
+    
+    // Replace placeholder images with actual images when ready
+    // This is just an example - you'll need to update with your actual image URLs
+    const actualImages = [
+        '/img/hero.jpg',
+        '/img/hero.jpg',
+        '/img/hero.jpg'
+    ];
+    
+    // Function to load actual images
+    function loadActualImages() {
+        lazyImages.forEach((img, index) => {
+            // Only replace if we have an actual image URL for this index
+            if (actualImages[index]) {
+                const newSrc = actualImages[index];
+                
+                // Create new image to preload
+                const tempImg = new Image();
+                tempImg.src = newSrc;
+                
+                // When the new image is loaded, update the src
+                tempImg.onload = function() {
+                    img.src = newSrc;
+                    img.classList.add('loaded');
+                };
+            }
+        });
+    }
+    
+    // Load actual images after a short delay to prioritize page render
+    setTimeout(loadActualImages, 500);
+    
+    // Add click event listeners for cards if needed
+    expectCards.forEach(card => {
+        card.addEventListener('click', function() {
+            // Optional: Add any click behavior here
+            // For example, you could expand the card or navigate to a detail page
+        });
+    });
+});
+// All Ages Section JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    // Select all age groups for animation
+    const ageGroups = document.querySelectorAll('.age-group');
+    
+    // Set up intersection observer for scroll animations
+    if ('IntersectionObserver' in window) {
+        const ageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    ageObserver.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, {
+            root: null, // Use viewport as root
+            threshold: 0.2, // Trigger when 20% of the element is visible
+            rootMargin: '0px 0px -50px 0px' // Adjust the trigger point
+        });
+        
+        // Observe each age group
+        ageGroups.forEach(group => {
+            ageObserver.observe(group);
+        });
+    } else {
+        // Fallback for browsers that don't support IntersectionObserver
+        ageGroups.forEach(group => {
+            group.classList.add('active');
+        });
+    }
+    
+    // Replace placeholder images with actual images
+    // These should be updated with your actual image paths
+    const ageImages = document.querySelectorAll('.age-image img');
+    const actualImages = [
+        '/img/healing streams.png',
+        '/img/healing streams.png',
+        '/img/healing streams.png'
+    ];
+    
+    // Function to load actual images
+    function loadActualImages() {
+        ageImages.forEach((img, index) => {
+            if (actualImages[index]) {
+                const newSrc = actualImages[index];
+                
+                // Create new image to preload
+                const tempImg = new Image();
+                tempImg.src = newSrc;
+                
+                // When the new image is loaded, update the src
+                tempImg.onload = function() {
+                    img.src = newSrc;
+                    img.classList.add('loaded');
+                };
+            }
+        });
+    }
+    
+    // Load actual images after a short delay
+    setTimeout(loadActualImages, 300);
+    
+    // Add click event for learn more buttons
+    const learnMoreBtns = document.querySelectorAll('.learn-more-btn');
+    
+    learnMoreBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get the group title this button belongs to
+            const groupTitle = this.closest('.age-content').querySelector('.group-title').textContent;
+            
+            // You can replace this with actual navigation or modal display
+            console.log(`Learn more about ${groupTitle}`);
+            
+            // Example: You could show more details in a modal
+            // showDetailsModal(groupTitle);
+        });
+    });
+    
+    // Optional: Function to show details in a modal
+    // Implement this if you want to show more information when "LEARN MORE" is clicked
+    function showDetailsModal(groupTitle) {
+        // This is a placeholder for modal functionality
+        // You would implement this based on your site's UI framework
+        alert(`More information about ${groupTitle} would appear here.`);
+    }
+});
+// Upcoming Events Section JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    // Sample event data - in a real implementation, this would come from an API or backend
+    const allEvents = [
+        {
+            id: 1,
+            title: "Community Connect (Manhattan)",
+            date: "15",
+            month: "APR",
+            time: "7:00pm - 9:00pm ET",
+            description: "Connect with neighbors and build lasting relationships in your local community!",
+            tags: ["FELLOWSHIP", "NEW YORK"],
+            location: "manhattan",
+            ministry: "outreach",
+            campus: "main"
+        },
+        {
+            id: 2,
+            title: "Community Connect (Brooklyn)",
+            date: "16",
+            month: "APR",
+            time: "7:00pm - 9:00pm ET",
+            description: "Connect with neighbors and build lasting relationships in your local community!",
+            tags: ["FELLOWSHIP", "NEW YORK"],
+            location: "brooklyn",
+            ministry: "outreach",
+            campus: "east"
+        },
+        {
+            id: 3,
+            title: "Young Adults Gathering",
+            date: "22",
+            month: "APR",
+            time: "7:30pm - 9:30pm ET",
+            description: "If you're a student or young professional in the city, this evening is just for you!",
+            tags: ["YOUNG ADULTS", "NEW YORK"],
+            location: "manhattan",
+            ministry: "youth",
+            campus: "main"
+        },
+        {
+            id: 4,
+            title: "Prayer & Worship Night",
+            date: "25",
+            month: "APR",
+            time: "7:00pm - 8:30pm ET",
+            description: "Join us for an evening of powerful prayer and inspiring worship music.",
+            tags: ["WORSHIP", "NEW YORK"],
+            location: "queens",
+            ministry: "prayer",
+            campus: "west"
+        },
+        {
+            id: 5,
+            title: "Family Fun Day",
+            date: "29",
+            month: "APR",
+            time: "10:00am - 2:00pm ET",
+            description: "Bring the whole family for games, food, and fellowship with other families!",
+            tags: ["FAMILY", "NEW YORK"],
+            location: "brooklyn",
+            ministry: "outreach",
+            campus: "east"
+        },
+        {
+            id: 6,
+            title: "Leadership Workshop",
+            date: "02",
+            month: "MAY",
+            time: "9:00am - 12:00pm ET",
+            description: "Develop your leadership skills and learn how to make a greater impact in your community.",
+            tags: ["LEADERSHIP", "NEW YORK"],
+            location: "manhattan",
+            ministry: "prayer",
+            campus: "main"
+        }
+    ];
+    
+    // DOM Elements
+    const eventsList = document.getElementById('eventsList');
+    const eventSearchInput = document.getElementById('eventSearchInput');
+    const eventSearchBtn = document.getElementById('eventSearchBtn');
+    const locationFilter = document.getElementById('locationFilter');
+    const campusFilter = document.getElementById('campusFilter');
+    const ministryFilter = document.getElementById('ministryFilter');
+    const prevPageBtn = document.getElementById('prevPage');
+    const nextPageBtn = document.getElementById('nextPage');
+    
+    // Pagination variables
+    let currentPage = 1;
+    const eventsPerPage = 3;
+    let filteredEvents = [...allEvents];
+    
+    // Initialize the page
+    initializeEvents();
+    
+    // Event listeners for filters
+    eventSearchBtn.addEventListener('click', filterEvents);
+    eventSearchInput.addEventListener('keyup', function(e) {
+        if (e.key === 'Enter') {
+            filterEvents();
+        }
+    });
+    
+    locationFilter.addEventListener('change', filterEvents);
+    campusFilter.addEventListener('change', filterEvents);
+    ministryFilter.addEventListener('change', filterEvents);
+    
+    // Pagination event listeners
+    prevPageBtn.addEventListener('click', function() {
+        if (currentPage > 1) {
+            currentPage--;
+            displayEvents();
+            updatePaginationControls();
+        }
+    });
+    
+    nextPageBtn.addEventListener('click', function() {
+        const totalPages = Math.ceil(filteredEvents.length / eventsPerPage);
+        if (currentPage < totalPages) {
+            currentPage++;
+            displayEvents();
+            updatePaginationControls();
+        }
+    });
+    
+    // Initialize events on page load
+    function initializeEvents() {
+        displayEvents();
+        updatePaginationControls();
+        
+        // Add animation after a short delay
+        setTimeout(() => {
+            document.querySelectorAll('.event-item').forEach(item => {
+                item.classList.add('visible');
+            });
+        }, 100);
+    }
+    
+    // Filter events based on search and dropdown selections
+    function filterEvents() {
+        currentPage = 1; // Reset to first page when filtering
+        
+        const searchTerm = eventSearchInput.value.toLowerCase();
+        const locationValue = locationFilter.value.toLowerCase();
+        const campusValue = campusFilter.value.toLowerCase();
+        const ministryValue = ministryFilter.value.toLowerCase();
+        
+        filteredEvents = allEvents.filter(event => {
+            // Search term filter
+            const matchesSearch = searchTerm === '' || 
+                event.title.toLowerCase().includes(searchTerm) || 
+                event.description.toLowerCase().includes(searchTerm);
+            
+            // Dropdown filters
+            const matchesLocation = locationValue === '' || event.location === locationValue;
+            const matchesCampus = campusValue === '' || event.campus === campusValue;
+            const matchesMinistry = ministryValue === '' || event.ministry === ministryValue;
+            
+            return matchesSearch && matchesLocation && matchesCampus && matchesMinistry;
+        });
+        
+        displayEvents();
+        updatePaginationControls();
+    }
+    
+    // Display events for the current page
+    function displayEvents() {
+        eventsList.innerHTML = ''; // Clear current events
+        
+        const startIndex = (currentPage - 1) * eventsPerPage;
+        const endIndex = Math.min(startIndex + eventsPerPage, filteredEvents.length);
+        const eventsToShow = filteredEvents.slice(startIndex, endIndex);
+        
+        if (eventsToShow.length === 0) {
+            eventsList.innerHTML = '<div class="no-events"><p>No events found matching your criteria.</p></div>';
             return;
         }
         
-        // Save language preference
-        localStorage.setItem('selectedLanguage', langCode);
-        
-        // Update HTML lang attribute
-        document.documentElement.setAttribute('lang', langCode);
-        
-        // Update display in language selector
-        if (currentLanguageDisplay) {
-            currentLanguageDisplay.textContent = langCode.toUpperCase();
-        }
-        
-        // Update all translated elements
-        document.querySelectorAll('[data-i18n]').forEach(element => {
-            const key = element.getAttribute('data-i18n');
+        eventsToShow.forEach(event => {
+            const eventElement = document.createElement('div');
+            eventElement.className = 'event-item';
+            eventElement.setAttribute('data-location', event.location);
+            eventElement.setAttribute('data-ministry', event.ministry);
+            eventElement.setAttribute('data-campus', event.campus);
             
-            if (translations[langCode][key]) {
-                // For elements with HTML content
-                if (key.includes('description')) {
-                    element.innerHTML = translations[langCode][key];
-                } else {
-                    element.textContent = translations[langCode][key];
-                }
-            }
+            eventElement.innerHTML = `
+                <div class="event-date">
+                    <div class="date-number">${event.date}</div>
+                    <div class="date-month">${event.month}</div>
+                </div>
+                
+                <div class="event-details">
+                    <h3 class="event-title">${event.title}</h3>
+                    <div class="event-time">${event.time}</div>
+                    <p class="event-description">${event.description}</p>
+                </div>
+                
+                <div class="event-tags">
+                    ${event.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+            `;
+            
+            // Add click event to view event details
+            eventElement.addEventListener('click', function() {
+                showEventDetails(event);
+            });
+            
+            eventsList.appendChild(eventElement);
         });
         
-        // Update language selector active states
-        document.querySelectorAll('[data-lang]').forEach(el => {
-            if (el.getAttribute('data-lang') === langCode) {
-                el.classList.add('active');
-            } else {
-                el.classList.remove('active');
-            }
-        });
-    }
-    
-    // Set up language switching
-    if (languageOptions.length > 0) {
-        languageOptions.forEach(option => {
-            option.addEventListener('click', function(e) {
-                e.preventDefault();
-                const lang = this.getAttribute('data-lang');
-                changeLanguage(lang);
-            });
-        });
-    }
-    
-    // Live Stream Status Check
-    function checkLiveStreamStatus() {
-        // This is a placeholder for a real API call to check live status
-        // In a real implementation, you would call your backend API
-        const now = new Date();
-        const day = now.getDay(); // 0 = Sunday
-        const hour = now.getHours();
-        
-        // If it's Sunday between 10AM and 12PM, show live status
-        const isLive = (day === 0 && hour >= 10 && hour < 12);
-        
-        if (streamStatus) {
-            const currentLang = document.documentElement.getAttribute('lang') || 'en';
-            
-            if (isLive) {
-                streamStatus.innerHTML = '<span class="live-indicator">● LIVE NOW</span> ' + 
-                    (translations[currentLang]['livestream.status'] || 'Streaming live');
-                streamStatus.classList.add('is-live');
-                
-                // Pulsate effect for live indicator
-                const liveIndicator = document.querySelector('.live-indicator');
-                if (liveIndicator) {
-                    liveIndicator.style.animation = 'pulse 1.5s infinite';
-                }
-            } else {
-                streamStatus.textContent = translations[currentLang]['livestream.status'] || 'Streaming live every Sunday at 10:00 AM';
-                streamStatus.classList.remove('is-live');
-            }
-        }
-    }
-    
-    // Scroll Animation with Intersection Observer
-    function setupScrollAnimations() {
-        if ('IntersectionObserver' in window) {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in-up');
-                        // Once the animation has played, stop observing
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-            
-            // Observe all animated elements
-            animatedElements.forEach(element => {
-                observer.observe(element);
-            });
-        } else {
-            // Fallback for browsers that don't support Intersection Observer
-            animatedElements.forEach(element => {
-                element.classList.add('fade-in-up');
-            });
-        }
-    }
-
-    // Interactive card hover effects
-    function setupCardInteractions() {
-        const cards = document.querySelectorAll('.card, .expect-card');
-        
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-15px)';
-                this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.15)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-                this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.08)';
-            });
-        });
-    }
-
-    // Create a dynamic typing effect for specific text
-    function createTypingEffect(element, textArray, delay = 3000) {
-        if (!element) return;
-        
-        let currentTextIndex = 0;
-        let currentCharIndex = 0;
-        let isDeleting = false;
-        let typingSpeed = 100;
-        
-        function type() {
-            const currentText = textArray[currentTextIndex];
-            
-            if (isDeleting) {
-                // Deleting text
-                element.textContent = currentText.substring(0, currentCharIndex - 1);
-                currentCharIndex--;
-                typingSpeed = 50; // Faster when deleting
-            } else {
-                // Typing text
-                element.textContent = currentText.substring(0, currentCharIndex + 1);
-                currentCharIndex++;
-                typingSpeed = 150; // Slower when typing
-            }
-            
-            // If we've completed typing the current text
-            if (!isDeleting && currentCharIndex === currentText.length) {
-                isDeleting = true;
-                typingSpeed = delay; // Pause before deleting
-            }
-            
-            // If we've completed deleting the current text
-            if (isDeleting && currentCharIndex === 0) {
-                isDeleting = false;
-                currentTextIndex = (currentTextIndex + 1) % textArray.length;
-                typingSpeed = 500; // Pause before typing next text
-            }
-            
-            setTimeout(type, typingSpeed);
-        }
-        
-        // Start the typing effect
-        setTimeout(type, delay);
-    }
-
-    // Newsletter form interactivity
-    function setupNewsletterForm() {
-        const newsletterForm = document.querySelector('.newsletter-form');
-        const emailInput = newsletterForm ? newsletterForm.querySelector('input[type="email"]') : null;
-        
-        if (newsletterForm && emailInput) {
-            // Focus effect
-            emailInput.addEventListener('focus', function() {
-                this.parentElement.classList.add('focused');
-            });
-            
-            emailInput.addEventListener('blur', function() {
-                if (!this.value) {
-                    this.parentElement.classList.remove('focused');
-                }
-            });
-            
-            // Form submission
-            newsletterForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const email = emailInput.value.trim();
-                if (!email || !isValidEmail(email)) {
-                    showFormError(emailInput, 'Please enter a valid email address');
-                    return;
-                }
-                
-                // Show success message
-                const submitButton = this.querySelector('button[type="submit"]');
-                const originalText = submitButton.textContent;
-                
-                submitButton.disabled = true;
-                submitButton.textContent = 'Submitting...';
-                
-                // Simulate API call
-                setTimeout(() => {
-                    submitButton.textContent = 'Success!';
-                    emailInput.value = '';
-                    
-                    // Reset button after some time
-                    setTimeout(() => {
-                        submitButton.disabled = false;
-                        submitButton.textContent = originalText;
-                    }, 2000);
-                }, 1000);
-            });
-        }
-    }
-    
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-    
-    function showFormError(inputElement, message) {
-        // Remove any existing error message
-        const existingError = inputElement.parentElement.querySelector('.error-message');
-        if (existingError) {
-            existingError.remove();
-        }
-        
-        // Create and add error message
-        const errorElement = document.createElement('p');
-        errorElement.classList.add('error-message');
-        errorElement.textContent = message;
-        inputElement.parentElement.appendChild(errorElement);
-        
-        // Highlight input
-        inputElement.classList.add('error');
-        
-        // Remove error after 3 seconds
+        // Add animation
         setTimeout(() => {
-            errorElement.remove();
-            inputElement.classList.remove('error');
-        }, 3000);
-    }
-    
-    // Hero section animations
-    function animateHeroElements() {
-        const heroLocation = document.querySelector('.hero-location');
-        const heroEvents = document.querySelector('.hero-events');
-        
-        if (heroLocation) {
-            heroLocation.style.opacity = '0';
-            heroLocation.style.transform = 'translateY(-30px)';
-            
-            setTimeout(() => {
-                heroLocation.style.transition = 'opacity 1s ease, transform 1s ease';
-                heroLocation.style.opacity = '1';
-                heroLocation.style.transform = 'translateY(0)';
-            }, 500);
-        }
-        
-        if (heroEvents) {
-            heroEvents.style.opacity = '0';
-            heroEvents.style.transform = 'translateY(30px)';
-            
-            setTimeout(() => {
-                heroEvents.style.transition = 'opacity 1s ease, transform 1s ease';
-                heroEvents.style.opacity = '1';
-                heroEvents.style.transform = 'translateY(0)';
-            }, 1000);
-        }
-    }
-    
-    // Set up YouTube video background functionality
-    function setupYouTubeBackground() {
-        // This is already handled in the inline script in index.html
-        // The YouTube iframe API will create and manage the player
-    }
-    
-    // Initialize everything
-    function init() {
-        // Set initial language based on user's browser/location
-        const initialLanguage = detectUserLanguage();
-        changeLanguage(initialLanguage);
-        
-        // Check livestream status initially and set up interval
-        checkLiveStreamStatus();
-        setInterval(checkLiveStreamStatus, 60000); // Check every minute
-        
-        // Set up all animations and interactions
-        setupScrollAnimations();
-        setupCardInteractions();
-        setupNewsletterForm();
-        animateHeroElements();
-        
-        // Set up typing effect for location title
-        const locationTitle = document.querySelector('.location-title');
-        if (locationTitle) {
-            createTypingEffect(locationTitle, [
-                'Located at Loveworld Auditorium',
-                'Join Us This Sunday',
-                'Experience God\'s Love',
-                'Welcome to Loveworld USA'
-            ]);
-        }
-        
-        // Set up active links in navigation
-        setupActiveNavLinks();
-    }
-    
-    // Set up active navigation links based on current section
-    function setupActiveNavLinks() {
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
-        
-        if (sections.length && navLinks.length) {
-            window.addEventListener('scroll', () => {
-                let current = '';
-                const scrollPosition = window.scrollY + 200; // Offset for header
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.offsetHeight;
-                    
-                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                        current = '#' + section.getAttribute('id');
-                    }
-                });
-                
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === current) {
-                        link.classList.add('active');
-                    }
-                });
+            document.querySelectorAll('.event-item').forEach(item => {
+                item.classList.add('visible');
             });
+        }, 50);
+    }
+    
+    // Update pagination controls
+    function updatePaginationControls() {
+        const totalPages = Math.ceil(filteredEvents.length / eventsPerPage);
+        
+        prevPageBtn.disabled = currentPage <= 1;
+        nextPageBtn.disabled = currentPage >= totalPages;
+    }
+    
+    // Function to show detailed event information (example implementation)
+    function showEventDetails(event) {
+        // This could open a modal or navigate to a detail page
+        console.log(`View details for: ${event.title}`);
+        
+        // Example of creating a modal (would need corresponding HTML/CSS)
+        // In a real implementation, you might have a modal template in your HTML
+        const modal = document.createElement('div');
+        modal.className = 'event-modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>${event.title}</h2>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="event-date-large">
+                        <div class="date-number">${event.date}</div>
+                        <div class="date-month">${event.month}</div>
+                    </div>
+                    <p class="event-time"><strong>Time:</strong> ${event.time}</p>
+                    <p class="event-description">${event.description}</p>
+                    <div class="event-location">
+                        <p><strong>Location:</strong> ${event.location.charAt(0).toUpperCase() + event.location.slice(1)}</p>
+                        <p><strong>Campus:</strong> ${event.campus.charAt(0).toUpperCase() + event.campus.slice(1)} Campus</p>
+                    </div>
+                    <button class="register-btn">Register Now</button>
+                </div>
+            </div>
+        `;
+        
+        // Add CSS for a simple modal (in a real implementation, this would be in your CSS file)
+        const modalStyle = document.createElement('style');
+        modalStyle.textContent = `
+            .event-modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.5);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+            }
+            .modal-content {
+                background-color: white;
+                border-radius: 10px;
+                width: 90%;
+                max-width: 600px;
+                max-height: 90vh;
+                overflow-y: auto;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            }
+            .modal-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+                border-bottom: 1px solid #eee;
+            }
+            .modal-body {
+                padding: 20px;
+            }
+            .close-modal {
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+            .event-date-large {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .event-date-large .date-number {
+                font-size: 4rem;
+                font-weight: 700;
+                line-height: 1;
+            }
+            .event-date-large .date-month {
+                font-size: 1.2rem;
+                text-transform: uppercase;
+                color: #777;
+            }
+            .register-btn {
+                display: block;
+                width: 100%;
+                padding: 12px;
+                background-color: #00bcd4;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                font-size: 1rem;
+                font-weight: 600;
+                cursor: pointer;
+                margin-top: 20px;
+                transition: background-color 0.3s ease;
+            }
+            .register-btn:hover {
+                background-color: #0097a7;
+            }
+        `;
+        
+        document.head.appendChild(modalStyle);
+        document.body.appendChild(modal);
+        
+        // Close modal when clicking the close button
+        modal.querySelector('.close-modal').addEventListener('click', function() {
+            document.body.removeChild(modal);
+            document.head.removeChild(modalStyle);
+        });
+        
+        // Close modal when clicking outside the modal content
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                document.body.removeChild(modal);
+                document.head.removeChild(modalStyle);
+            }
+        });
+        
+        // Register button functionality
+        modal.querySelector('.register-btn').addEventListener('click', function() {
+            alert(`You are now registered for ${event.title}!`);
+            document.body.removeChild(modal);
+            document.head.removeChild(modalStyle);
+        });
+    }
+});
+// Livestream Section JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    // Configuration (these would normally come from your CMS or backend)
+    const config = {
+        isLive: false, // Set to true when streaming is live
+        youtubeEmbedId: 'YOUR_YOUTUBE_EMBED_ID', // Replace with your actual YouTube ID
+        facebookEmbedUrl: 'https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/YourPage/videos/YOUR_VIDEO_ID/', // Replace with your actual Facebook embed URL
+        currentPlatform: 'youtube', // 'youtube' or 'facebook'
+        streamTitle: 'Sunday Worship Service',
+        streamDescription: 'Join Pastor David for our weekly worship service as we dive into God\'s Word together.',
+        nextStreamTime: 'Sunday at 9:30AM ET',
+        streamLink: 'https://loveworldusa.org/live',
+        upcomingStreams: [
+            {
+                id: 1,
+                title: 'Sunday Morning Service',
+                description: 'Weekly worship and message from Pastor David',
+                date: '2025-04-13',
+                time: '9:30 AM ET',
+                thumbnail: 'https://via.placeholder.com/600x400',
+            },
+            {
+                id: 2,
+                title: 'Midweek Bible Study',
+                description: 'Deep dive into the book of Ephesians',
+                date: '2025-04-16',
+                time: '7:00 PM ET',
+                thumbnail: 'https://via.placeholder.com/600x400',
+            },
+            {
+                id: 3,
+                title: 'Prayer & Worship Night',
+                description: 'A special evening of prayer and praise',
+                date: '2025-04-18',
+                time: '8:00 PM ET',
+                thumbnail: 'https://via.placeholder.com/600x400',
+            }
+        ]
+    };
+
+    // DOM Elements
+    const playerOverlay = document.getElementById('playerOverlay');
+    const videoContainer = document.getElementById('videoContainer');
+    const liveStatusIndicator = document.getElementById('liveStatusIndicator');
+    const liveStatusText = document.getElementById('liveStatusText');
+    const nextStreamTime = document.getElementById('nextStreamTime');
+    const streamTitle = document.getElementById('streamTitle');
+    const streamDescription = document.getElementById('streamDescription');
+    const setReminderBtn = document.getElementById('setReminderBtn');
+    const reminderModal = document.getElementById('reminderModal');
+    const closeReminderModal = document.getElementById('closeReminderModal');
+    const reminderForm = document.getElementById('reminderForm');
+    const watchOnYoutube = document.getElementById('watchOnYoutube');
+    const watchOnFacebook = document.getElementById('watchOnFacebook');
+    const shareStream = document.getElementById('shareStream');
+    const shareModal = document.getElementById('shareModal');
+    const closeShareModal = document.getElementById('closeShareModal');
+    const streamLinkInput = document.getElementById('streamLinkInput');
+    const copyLinkBtn = document.getElementById('copyLinkBtn');
+    const upcomingStreamsList = document.getElementById('upcomingStreamsList');
+    
+    // Initialize page
+    initPage();
+    
+    // Set up event listeners
+    setUpEventListeners();
+    
+    // Functions
+    function initPage() {
+        // Update with config data
+        streamTitle.textContent = config.streamTitle;
+        streamDescription.textContent = config.streamDescription;
+        nextStreamTime.textContent = config.nextStreamTime;
+        streamLinkInput.value = config.streamLink;
+        
+        // Update live status
+        updateLiveStatus();
+        
+        // Generate upcoming streams
+        generateUpcomingStreams();
+        
+        // If live, load the stream
+        if (config.isLive) {
+            loadStream(config.currentPlatform);
         }
     }
     
-    // Handle loading screen
-    function handlePageLoad() {
-        const body = document.body;
+    function setUpEventListeners() {
+        // Reminder modal
+        setReminderBtn.addEventListener('click', function() {
+            reminderModal.classList.add('show');
+        });
         
-        // Wait for YouTube API to initialize
-        window.addEventListener('load', () => {
-            // Add loaded class to body to trigger animations
+        closeReminderModal.addEventListener('click', function() {
+            reminderModal.classList.remove('show');
+        });
+        
+        reminderForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('reminderEmail').value;
+            const phone = document.getElementById('reminderPhone').value;
+            const times = [...document.querySelectorAll('input[name="reminderTime"]:checked')]
+                .map(checkbox => checkbox.value);
+            
+            // This is where you would send the data to your backend
+            console.log('Setting reminder for:', email, phone, times);
+            
+            // Show confirmation
+            alert('Thank you! We\'ll remind you before the stream starts.');
+            
+            // Close modal
+            reminderModal.classList.remove('show');
+        });
+        
+        // Share modal
+        shareStream.addEventListener('click', function() {
+            shareModal.classList.add('show');
+        });
+        
+        closeShareModal.addEventListener('click', function() {
+            shareModal.classList.remove('show');
+        });
+        
+        // Copy link button
+        copyLinkBtn.addEventListener('click', function() {
+            streamLinkInput.select();
+            document.execCommand('copy');
+            this.textContent = 'Copied!';
+            
             setTimeout(() => {
-                body.classList.add('loaded');
-            }, 500);
+                this.textContent = 'Copy';
+            }, 2000);
+        });
+        
+        // Platform buttons
+        watchOnYoutube.addEventListener('click', function() {
+            window.open(`https://www.youtube.com/watch?v=${config.youtubeEmbedId}`, '_blank');
+        });
+        
+        watchOnFacebook.addEventListener('click', function() {
+            window.open(`https://www.facebook.com/YourPage/videos/YOUR_VIDEO_ID/`, '_blank');
+        });
+        
+        // Share buttons
+        document.getElementById('shareFacebook').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(config.streamLink)}`, '_blank');
+        });
+        
+        document.getElementById('shareTwitter').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(config.streamLink)}&text=${encodeURIComponent('Join us for worship at Love World International USA!')}`, '_blank');
+        });
+        
+        document.getElementById('shareWhatsapp').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.open(`https://wa.me/?text=${encodeURIComponent('Join us for worship at Love World International USA! ' + config.streamLink)}`, '_blank');
+        });
+        
+        document.getElementById('shareEmail').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = `mailto:?subject=${encodeURIComponent('Join our Livestream Service')}&body=${encodeURIComponent('Join us for worship at Love World International USA!\n\n' + config.streamLink)}`;
+        });
+        
+        // Clicks on upcoming stream cards
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.upcoming-stream-card')) {
+                const card = e.target.closest('.upcoming-stream-card');
+                const streamId = card.dataset.id;
+                
+                // This could open details, set a reminder, etc.
+                setReminderBtn.click();
+            }
         });
     }
     
-    // Run initialization
-    init();
-    handlePageLoad();
+    function updateLiveStatus() {
+        if (config.isLive) {
+            liveStatusText.textContent = 'LIVE NOW';
+            liveStatusIndicator.classList.add('active');
+            playerOverlay.style.display = 'none';
+        } else {
+            liveStatusText.textContent = 'UPCOMING';
+            liveStatusIndicator.classList.remove('active');
+            playerOverlay.style.display = 'flex';
+        }
+    }
+    
+    function loadStream(platform) {
+        if (platform === 'youtube') {
+            videoContainer.innerHTML = `
+                <iframe
+                    src="https://www.youtube.com/embed/${config.youtubeEmbedId}?autoplay=1&rel=0"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                ></iframe>
+            `;
+        } else if (platform === 'facebook') {
+            videoContainer.innerHTML = `
+                <iframe
+                    src="${config.facebookEmbedUrl}"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                ></iframe>
+            `;
+        }
+    }
+    
+    function generateUpcomingStreams() {
+        upcomingStreamsList.innerHTML = '';
+        
+        config.upcomingStreams.forEach(stream => {
+            const streamCard = document.createElement('div');
+            streamCard.className = 'upcoming-stream-card';
+            streamCard.dataset.id = stream.id;
+            
+            streamCard.innerHTML = `
+                <div class="upcoming-stream-thumbnail">
+                    <img src="${stream.thumbnail}" alt="${stream.title}">
+                    <div class="upcoming-stream-date">${formatDate(stream.date)}</div>
+                </div>
+                <div class="upcoming-stream-info">
+                    <h4>${stream.title}</h4>
+                    <p>${stream.description}</p>
+                    <div class="upcoming-stream-time">
+                        <i class="fas fa-clock"></i>
+                        ${stream.time}
+                    </div>
+                </div>
+            `;
+            
+            upcomingStreamsList.appendChild(streamCard);
+        });
+    }
+    
+    function formatDate(dateStr) {
+        const date = new Date(dateStr);
+        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
 });
