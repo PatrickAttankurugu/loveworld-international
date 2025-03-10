@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     mobileNav.innerHTML = `
         <div class="mobile-nav-container">
             <div class="mobile-nav-header">
-                <img src="https://via.placeholder.com/150x50" alt="Love World International USA">
+                <img src="img/love-world.jpg" alt="Love World International USA">
                 <button class="close-menu">×</button>
             </div>
             <nav>
@@ -288,9 +288,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Replace placeholder images with actual images when ready
     // This is just an example - you'll need to update with your actual image URLs
     const actualImages = [
-        '/img/hero.jpg',
-        '/img/hero.jpg',
-        '/img/hero.jpg'
+        'img/pas.jpg',
+        'img/Pastor-chris.jpeg',
+        'img/love-world.jpg'
     ];
     
     // Function to load actual images
