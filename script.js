@@ -668,7 +668,7 @@ document.addEventListener('DOMContentLoaded', function() {
                description: 'Special teaching on the Holy Spirit by Pastor Chris',
                date: '2025-04-16',
                time: '7:00 PM ET',
-               thumbnail: 'https://via.placeholder.com/600x400',
+               thumbnail: 'img/midweek.png',
            },
            {
                id: 3,
@@ -676,7 +676,7 @@ document.addEventListener('DOMContentLoaded', function() {
                description: 'Special healing service with Pastor Chris',
                date: '2025-04-18',
                time: '8:00 PM ET',
-               thumbnail: 'https://via.placeholder.com/600x400',
+               thumbnail: 'img/streams.jpg',
            }
        ]
    };
