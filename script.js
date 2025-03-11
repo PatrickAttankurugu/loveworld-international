@@ -660,7 +660,7 @@ document.addEventListener('DOMContentLoaded', function() {
                description: 'Join Pastor Chris for the monthly communion service',
                date: '2025-04-13',
                time: '9:30 AM ET',
-               thumbnail: 'https://via.placeholder.com/600x400',
+               thumbnail: 'img/communion.jpeg',
            },
            {
                id: 2,
