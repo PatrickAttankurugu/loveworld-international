@@ -32,8 +32,11 @@
                 </a>
             </div>
             <div class="header-right">
+                <div class="language-selector">
+                    <!-- Language buttons will be added by translate.js -->
+                </div>
                 <button class="event-button">UPCOMING EVENTS</button>
-                <button class="menu-toggle" id="menuToggle">
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -41,6 +44,43 @@
             </div>
         </div>
     </header>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-container">
+            <div class="mobile-nav-header">
+                <img src="img/logo.png" alt="Love World International USA">
+                <button class="close-menu" id="closeMenu" aria-label="Close menu">&times;</button>
+            </div>
+            <nav>
+                <ul>
+                    <!-- About Menu Item with Dropdown -->
+                    <li class="has-submenu">
+                        <a href="#" class="dropdown-toggle">About <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#">About Love World International</a></li>
+                            <li><a href="#">Our Vision</a></li>
+                            <li><a href="#">Our Mission</a></li>
+                            <li><a href="#">Management Staff</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" data-i18n="navigation.ourBeliefs">Our Beliefs</a></li>
+                    <li><a href="#" data-i18n="navigation.ourLeadership">Our Leadership</a></li>
+                    <li><a href="#" data-i18n="navigation.give">Give</a></li>
+                    <li><a href="#" data-i18n="navigation.locations"><i class="fas fa-map-marker-alt"></i> Locations</a></li>
+                    <li><a href="#" data-i18n="navigation.upcomingEvents">Upcoming Events</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay Background for Mobile Menu -->
+    <div class="overlay-bg" id="menuOverlay"></div>
 
     <!-- Breadcrumb -->
     <div class="breadcrumb">
@@ -75,7 +115,6 @@
             </div>
         </div>
     </section>
-
 
     <!-- What to Expect Section -->
 <section class="what-to-expect" id="what-to-expect">
@@ -452,12 +491,12 @@
 
             <!-- Column 2 -->
             <div class="footer-column">
-                <h3 class="footer-heading">Locations</h3>
+                <h3 class="footer-heading">Other Locations</h3>
                 <ul class="footer-links">
                     <li><a href="#">515</a></li>
-                    <li><a href="#">Cumberland</a></li>
-                    <li><a href="#">Trilith</a></li>
-                    <li><a href="#">Washington, DC</a></li>
+                    <li><a href="#">Some Address</a></li>
+                    <li><a href="#">More details</a></li>
+                    <li><a href="#">Carlifonia</a></li>
                 </ul>
             </div>
 

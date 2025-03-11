@@ -4,15 +4,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.getElementById('menuToggle');
     const mobileNav = document.createElement('div');
     mobileNav.className = 'mobile-nav';
+    mobileNav.id = 'mobileNav';
     mobileNav.innerHTML = `
         <div class="mobile-nav-container">
             <div class="mobile-nav-header">
-                <img src="img/love-world.jpg" alt="Love World International USA">
-                <button class="close-menu">×</button>
+                <img src="img/logo.png" alt="Love World International USA">
+                <button class="close-menu" id="closeMenu">&times;</button>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#">Our Story</a></li>
+                    <!-- About Menu Item with Dropdown -->
+                    <li class="has-submenu">
+                        <a href="#" class="dropdown-toggle">About <i class="fas fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            <li><a href="#">About Love World International</a></li>
+                            <li><a href="#">Our Vision</a></li>
+                            <li><a href="#">Our Mission</a></li>
+                            <li><a href="#">Management Staff</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#">Our Beliefs</a></li>
                     <li><a href="#">Our Leadership</a></li>
                     <li><a href="#">Give</a></li>
@@ -36,13 +46,15 @@ document.addEventListener('DOMContentLoaded', function() {
             position: fixed;
             top: 0;
             right: -100%;
-            width: 300px;
+            width: 85%;
+            max-width: 350px;
             height: 100vh;
             background-color: white;
             z-index: 1000;
-            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-            transition: right 0.3s ease;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.15);
+            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
             overflow-y: auto;
+            padding-top: 70px;
         }
         .mobile-nav.active {
             right: 0;
@@ -55,6 +67,10 @@ document.addEventListener('DOMContentLoaded', function() {
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            right: 20px;
         }
         .mobile-nav-header img {
             height: 30px;
@@ -64,16 +80,32 @@ document.addEventListener('DOMContentLoaded', function() {
             border: none;
             font-size: 30px;
             cursor: pointer;
+            color: #0d1a59;
+            transition: all 0.3s ease;
+        }
+        .close-menu:hover {
+            color: #d9a228;
+            transform: rotate(90deg);
         }
         .mobile-nav nav ul {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 0;
+        }
+        .mobile-nav nav ul li {
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
         .mobile-nav nav ul li a {
-            color: #333;
-            font-size: 18px;
+            color: #0d1a59;
+            font-size: 16px;
             font-weight: 500;
+            display: block;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        .mobile-nav nav ul li a:hover {
+            color: #d9a228;
+            padding-left: 5px;
         }
         .mobile-social {
             margin-top: 40px;
@@ -82,8 +114,21 @@ document.addEventListener('DOMContentLoaded', function() {
             justify-content: center;
         }
         .mobile-social a {
-            font-size: 1.5rem;
-            color: #333;
+            font-size: 1.2rem;
+            color: #0d1a59;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(13, 26, 89, 0.05);
+            transition: all 0.3s ease;
+        }
+        .mobile-social a:hover {
+            background-color: #d9a228;
+            color: #fff;
+            transform: translateY(-3px);
         }
         .overlay-bg {
             position: fixed;
@@ -91,9 +136,97 @@ document.addEventListener('DOMContentLoaded', function() {
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0,0,0,0.6);
             z-index: 999;
-            display: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            backdrop-filter: blur(3px);
+        }
+        .overlay-bg.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        body.menu-open {
+            overflow: hidden;
+        }
+        .menu-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 5px;
+            position: relative;
+            width: 40px;
+            height: 40px;
+            z-index: 110;
+            justify-content: center;
+            align-items: center;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: #0d1a59;
+            border-radius: 2px;
+            transition: transform 0.3s ease-in-out, opacity 0.2s ease;
+            transform-origin: center;
+        }
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+        /* Styles for the submenu/dropdown in mobile navigation */
+        .mobile-nav .has-submenu {
+            position: relative;
+        }
+        .mobile-nav .dropdown-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .mobile-nav .dropdown-toggle i {
+            transition: transform 0.3s ease;
+        }
+        .mobile-nav .dropdown-toggle.active i {
+            transform: rotate(-180deg);
+        }
+        .mobile-nav .submenu {
+            background-color: rgba(13, 26, 89, 0.03);
+            border-radius: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+        }
+        .mobile-nav .submenu.active {
+            max-height: 1000px;
+            opacity: 1;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        .mobile-nav .submenu li {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        .mobile-nav .submenu li:last-child {
+            border-bottom: none;
+        }
+        .mobile-nav .submenu a {
+            padding: 12px 15px;
+            font-size: 14px;
+            color: #333;
+        }
+        .mobile-nav .submenu a:hover {
+            background-color: rgba(217, 162, 40, 0.05);
         }
     `;
     document.head.appendChild(style);
@@ -101,13 +234,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Create overlay background
     const overlayBg = document.createElement('div');
     overlayBg.className = 'overlay-bg';
+    overlayBg.id = 'menuOverlay';
     document.body.appendChild(overlayBg);
 
     // Toggle mobile menu
     menuToggle.addEventListener('click', function() {
         mobileNav.classList.add('active');
-        overlayBg.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
+        overlayBg.classList.add('active');
+        document.body.classList.add('menu-open');
+        menuToggle.classList.add('active');
     });
 
     // Close mobile menu
@@ -117,8 +252,47 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function closeNav() {
         mobileNav.classList.remove('active');
-        overlayBg.style.display = 'none';
-        document.body.style.overflow = ''; // Re-enable scrolling
+        overlayBg.classList.remove('active');
+        document.body.classList.remove('menu-open');
+        menuToggle.classList.remove('active');
+        
+        // Reset any open submenus when closing the main menu
+        resetSubmenus();
+    }
+    
+    // Submenu dropdown functionality
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Toggle the active class on the dropdown button
+            this.classList.toggle('active');
+            
+            // Find the adjacent submenu
+            const submenu = this.nextElementSibling;
+            if (submenu) {
+                submenu.classList.toggle('active');
+            }
+            
+            // Don't close the mobile menu when clicking a dropdown toggle
+            e.stopPropagation();
+        });
+    });
+    
+    // Reset submenus function
+    function resetSubmenus() {
+        const activeDropdowns = document.querySelectorAll('.dropdown-toggle.active');
+        const activeSubmenus = document.querySelectorAll('.submenu.active');
+        
+        activeDropdowns.forEach(dropdown => {
+            dropdown.classList.remove('active');
+        });
+        
+        activeSubmenus.forEach(submenu => {
+            submenu.classList.remove('active');
+        });
     }
 
     // Parallax scrolling effect
@@ -126,23 +300,26 @@ document.addEventListener('DOMContentLoaded', function() {
         const parallaxContainers = document.querySelectorAll('.parallax-container');
         
         parallaxContainers.forEach(container => {
-            const scrollPosition = window.pageYOffset;
-            const speed = 0.5; // Adjust for desired effect speed
-            
-            // Calculate the new background position
-            const yPos = -(scrollPosition * speed);
-            
-            // Apply the new background position
-            container.style.backgroundPosition = `center ${yPos}px`;
+            // Only apply parallax on devices that can handle it (not mobile)
+            if (window.innerWidth >= 992) {
+                const scrollPosition = window.pageYOffset;
+                const speed = 0.5; // Adjust for desired effect speed
+                
+                // Calculate the new background position
+                const yPos = -(scrollPosition * speed);
+                
+                // Apply the new background position
+                container.style.backgroundPosition = `center ${yPos}px`;
+            }
         });
     });
 
     // Smooth Scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
+            if(this.getAttribute('href') === '#' || this.classList.contains('dropdown-toggle')) return;
             
-            if(this.getAttribute('href') === '#') return;
+            e.preventDefault();
             
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
@@ -250,7 +427,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize animation on page load
     handleScrollAnimation();
+    
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        // Reset parallax on mobile
+        if (window.innerWidth < 992) {
+            const parallaxContainers = document.querySelectorAll('.parallax-container');
+            parallaxContainers.forEach(container => {
+                container.style.backgroundPosition = 'center center';
+            });
+        }
+    });
+    
+    // Add interactive elements to time buttons
+    const timeButtons = document.querySelectorAll('.time-button');
+    
+    timeButtons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px)';
+            this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = 'none';
+        });
+    });
 });
+
 // What to Expect Section JavaScript
 document.addEventListener('DOMContentLoaded', function() {
     // Intersection Observer for scroll animations
@@ -324,6 +528,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
 // All Ages Section JavaScript
 document.addEventListener('DOMContentLoaded', function() {
     // Select all age groups for animation
@@ -412,6 +617,7 @@ document.addEventListener('DOMContentLoaded', function() {
         alert(`More information about ${groupTitle} would appear here.`);
     }
 });
+
 // Upcoming Events Section JavaScript
 document.addEventListener('DOMContentLoaded', function() {
     // Sample event data - in a real implementation, this would come from an API or backend
@@ -675,338 +881,339 @@ document.addEventListener('DOMContentLoaded', function() {
         modalStyle.textContent = `
             .event-modal {
                 position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0,0,0,0.5);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                z-index: 1000;
-            }
-            .modal-content {
-                background-color: white;
-                border-radius: 10px;
-                width: 90%;
-                max-width: 600px;
-                max-height: 90vh;
-                overflow-y: auto;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            }
-            .modal-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 20px;
-                border-bottom: 1px solid #eee;
-            }
-            .modal-body {
-                padding: 20px;
-            }
-            .close-modal {
-                background: none;
-                border: none;
-                font-size: 1.5rem;
-                cursor: pointer;
-            }
-            .event-date-large {
-                text-align: center;
-                margin-bottom: 20px;
-            }
-            .event-date-large .date-number {
-                font-size: 4rem;
-                font-weight: 700;
-                line-height: 1;
-            }
-            .event-date-large .date-month {
-                font-size: 1.2rem;
-                text-transform: uppercase;
-                color: #777;
-            }
-            .register-btn {
-                display: block;
-                width: 100%;
-                padding: 12px;
-                background-color: #00bcd4;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                font-size: 1rem;
-                font-weight: 600;
-                cursor: pointer;
-                margin-top: 20px;
-                transition: background-color 0.3s ease;
-            }
-            .register-btn:hover {
-                background-color: #0097a7;
-            }
-        `;
-        
-        document.head.appendChild(modalStyle);
-        document.body.appendChild(modal);
-        
-        // Close modal when clicking the close button
-        modal.querySelector('.close-modal').addEventListener('click', function() {
-            document.body.removeChild(modal);
-            document.head.removeChild(modalStyle);
-        });
-        
-        // Close modal when clicking outside the modal content
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                document.body.removeChild(modal);
-                document.head.removeChild(modalStyle);
-            }
-        });
-        
-        // Register button functionality
-        modal.querySelector('.register-btn').addEventListener('click', function() {
-            alert(`You are now registered for ${event.title}!`);
-            document.body.removeChild(modal);
-            document.head.removeChild(modalStyle);
-        });
-    }
+               top: 0;
+               left: 0;
+               width: 100%;
+               height: 100%;
+               background-color: rgba(0,0,0,0.5);
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               z-index: 1000;
+           }
+           .modal-content {
+               background-color: white;
+               border-radius: 10px;
+               width: 90%;
+               max-width: 600px;
+               max-height: 90vh;
+               overflow-y: auto;
+               box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+           }
+           .modal-header {
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+               padding: 20px;
+               border-bottom: 1px solid #eee;
+           }
+           .modal-body {
+               padding: 20px;
+           }
+           .close-modal {
+               background: none;
+               border: none;
+               font-size: 1.5rem;
+               cursor: pointer;
+           }
+           .event-date-large {
+               text-align: center;
+               margin-bottom: 20px;
+           }
+           .event-date-large .date-number {
+               font-size: 4rem;
+               font-weight: 700;
+               line-height: 1;
+           }
+           .event-date-large .date-month {
+               font-size: 1.2rem;
+               text-transform: uppercase;
+               color: #777;
+           }
+           .register-btn {
+               display: block;
+               width: 100%;
+               padding: 12px;
+               background-color: #00bcd4;
+               color: white;
+               border: none;
+               border-radius: 5px;
+               font-size: 1rem;
+               font-weight: 600;
+               cursor: pointer;
+               margin-top: 20px;
+               transition: background-color 0.3s ease;
+           }
+           .register-btn:hover {
+               background-color: #0097a7;
+           }
+       `;
+       
+       document.head.appendChild(modalStyle);
+       document.body.appendChild(modal);
+       
+       // Close modal when clicking the close button
+       modal.querySelector('.close-modal').addEventListener('click', function() {
+           document.body.removeChild(modal);
+           document.head.removeChild(modalStyle);
+       });
+       
+       // Close modal when clicking outside the modal content
+       modal.addEventListener('click', function(e) {
+           if (e.target === modal) {
+               document.body.removeChild(modal);
+               document.head.removeChild(modalStyle);
+           }
+       });
+       
+       // Register button functionality
+       modal.querySelector('.register-btn').addEventListener('click', function() {
+           alert(`You are now registered for ${event.title}!`);
+           document.body.removeChild(modal);
+           document.head.removeChild(modalStyle);
+       });
+   }
 });
+
 // Livestream Section JavaScript
 document.addEventListener('DOMContentLoaded', function() {
-    // Configuration (these would normally come from your CMS or backend)
-    const config = {
-        isLive: false, // Set to true when streaming is live
-        youtubeEmbedId: 'YOUR_YOUTUBE_EMBED_ID', // Replace with your actual YouTube ID
-        facebookEmbedUrl: 'https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/YourPage/videos/YOUR_VIDEO_ID/', // Replace with your actual Facebook embed URL
-        currentPlatform: 'youtube', // 'youtube' or 'facebook'
-        streamTitle: 'Sunday Worship Service',
-        streamDescription: 'Join Pastor David for our weekly worship service as we dive into God\'s Word together.',
-        nextStreamTime: 'Sunday at 9:30AM ET',
-        streamLink: 'https://loveworldusa.org/live',
-        upcomingStreams: [
-            {
-                id: 1,
-                title: 'Sunday Morning Service',
-                description: 'Weekly worship and message from Pastor David',
-                date: '2025-04-13',
-                time: '9:30 AM ET',
-                thumbnail: 'https://via.placeholder.com/600x400',
-            },
-            {
-                id: 2,
-                title: 'Midweek Bible Study',
-                description: 'Deep dive into the book of Ephesians',
-                date: '2025-04-16',
-                time: '7:00 PM ET',
-                thumbnail: 'https://via.placeholder.com/600x400',
-            },
-            {
-                id: 3,
-                title: 'Prayer & Worship Night',
-                description: 'A special evening of prayer and praise',
-                date: '2025-04-18',
-                time: '8:00 PM ET',
-                thumbnail: 'https://via.placeholder.com/600x400',
-            }
-        ]
-    };
+   // Configuration (these would normally come from your CMS or backend)
+   const config = {
+       isLive: false, // Set to true when streaming is live
+       youtubeEmbedId: 'YOUR_YOUTUBE_EMBED_ID', // Replace with your actual YouTube ID
+       facebookEmbedUrl: 'https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/YourPage/videos/YOUR_VIDEO_ID/', // Replace with your actual Facebook embed URL
+       currentPlatform: 'youtube', // 'youtube' or 'facebook'
+       streamTitle: 'Sunday Worship Service',
+       streamDescription: 'Join Pastor David for our weekly worship service as we dive into God\'s Word together.',
+       nextStreamTime: 'Sunday at 9:30AM ET',
+       streamLink: 'https://loveworldusa.org/live',
+       upcomingStreams: [
+           {
+               id: 1,
+               title: 'Sunday Morning Service',
+               description: 'Weekly worship and message from Pastor David',
+               date: '2025-04-13',
+               time: '9:30 AM ET',
+               thumbnail: 'https://via.placeholder.com/600x400',
+           },
+           {
+               id: 2,
+               title: 'Midweek Bible Study',
+               description: 'Deep dive into the book of Ephesians',
+               date: '2025-04-16',
+               time: '7:00 PM ET',
+               thumbnail: 'https://via.placeholder.com/600x400',
+           },
+           {
+               id: 3,
+               title: 'Prayer & Worship Night',
+               description: 'A special evening of prayer and praise',
+               date: '2025-04-18',
+               time: '8:00 PM ET',
+               thumbnail: 'https://via.placeholder.com/600x400',
+           }
+       ]
+   };
 
-    // DOM Elements
-    const playerOverlay = document.getElementById('playerOverlay');
-    const videoContainer = document.getElementById('videoContainer');
-    const liveStatusIndicator = document.getElementById('liveStatusIndicator');
-    const liveStatusText = document.getElementById('liveStatusText');
-    const nextStreamTime = document.getElementById('nextStreamTime');
-    const streamTitle = document.getElementById('streamTitle');
-    const streamDescription = document.getElementById('streamDescription');
-    const setReminderBtn = document.getElementById('setReminderBtn');
-    const reminderModal = document.getElementById('reminderModal');
-    const closeReminderModal = document.getElementById('closeReminderModal');
-    const reminderForm = document.getElementById('reminderForm');
-    const watchOnYoutube = document.getElementById('watchOnYoutube');
-    const watchOnFacebook = document.getElementById('watchOnFacebook');
-    const shareStream = document.getElementById('shareStream');
-    const shareModal = document.getElementById('shareModal');
-    const closeShareModal = document.getElementById('closeShareModal');
-    const streamLinkInput = document.getElementById('streamLinkInput');
-    const copyLinkBtn = document.getElementById('copyLinkBtn');
-    const upcomingStreamsList = document.getElementById('upcomingStreamsList');
-    
-    // Initialize page
-    initPage();
-    
-    // Set up event listeners
-    setUpEventListeners();
-    
-    // Functions
-    function initPage() {
-        // Update with config data
-        streamTitle.textContent = config.streamTitle;
-        streamDescription.textContent = config.streamDescription;
-        nextStreamTime.textContent = config.nextStreamTime;
-        streamLinkInput.value = config.streamLink;
-        
-        // Update live status
-        updateLiveStatus();
-        
-        // Generate upcoming streams
-        generateUpcomingStreams();
-        
-        // If live, load the stream
-        if (config.isLive) {
-            loadStream(config.currentPlatform);
-        }
-    }
-    
-    function setUpEventListeners() {
-        // Reminder modal
-        setReminderBtn.addEventListener('click', function() {
-            reminderModal.classList.add('show');
-        });
-        
-        closeReminderModal.addEventListener('click', function() {
-            reminderModal.classList.remove('show');
-        });
-        
-        reminderForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('reminderEmail').value;
-            const phone = document.getElementById('reminderPhone').value;
-            const times = [...document.querySelectorAll('input[name="reminderTime"]:checked')]
-                .map(checkbox => checkbox.value);
-            
-            // This is where you would send the data to your backend
-            console.log('Setting reminder for:', email, phone, times);
-            
-            // Show confirmation
-            alert('Thank you! We\'ll remind you before the stream starts.');
-            
-            // Close modal
-            reminderModal.classList.remove('show');
-        });
-        
-        // Share modal
-        shareStream.addEventListener('click', function() {
-            shareModal.classList.add('show');
-        });
-        
-        closeShareModal.addEventListener('click', function() {
-            shareModal.classList.remove('show');
-        });
-        
-        // Copy link button
-        copyLinkBtn.addEventListener('click', function() {
-            streamLinkInput.select();
-            document.execCommand('copy');
-            this.textContent = 'Copied!';
-            
-            setTimeout(() => {
-                this.textContent = 'Copy';
-            }, 2000);
-        });
-        
-        // Platform buttons
-        watchOnYoutube.addEventListener('click', function() {
-            window.open(`https://www.youtube.com/watch?v=${config.youtubeEmbedId}`, '_blank');
-        });
-        
-        watchOnFacebook.addEventListener('click', function() {
-            window.open(`https://www.facebook.com/YourPage/videos/YOUR_VIDEO_ID/`, '_blank');
-        });
-        
-        // Share buttons
-        document.getElementById('shareFacebook').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(config.streamLink)}`, '_blank');
-        });
-        
-        document.getElementById('shareTwitter').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(config.streamLink)}&text=${encodeURIComponent('Join us for worship at Love World International USA!')}`, '_blank');
-        });
-        
-        document.getElementById('shareWhatsapp').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.open(`https://wa.me/?text=${encodeURIComponent('Join us for worship at Love World International USA! ' + config.streamLink)}`, '_blank');
-        });
-        
-        document.getElementById('shareEmail').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.location.href = `mailto:?subject=${encodeURIComponent('Join our Livestream Service')}&body=${encodeURIComponent('Join us for worship at Love World International USA!\n\n' + config.streamLink)}`;
-        });
-        
-        // Clicks on upcoming stream cards
-        document.addEventListener('click', function(e) {
-            if (e.target.closest('.upcoming-stream-card')) {
-                const card = e.target.closest('.upcoming-stream-card');
-                const streamId = card.dataset.id;
-                
-                // This could open details, set a reminder, etc.
-                setReminderBtn.click();
-            }
-        });
-    }
-    
-    function updateLiveStatus() {
-        if (config.isLive) {
-            liveStatusText.textContent = 'LIVE NOW';
-            liveStatusIndicator.classList.add('active');
-            playerOverlay.style.display = 'none';
-        } else {
-            liveStatusText.textContent = 'UPCOMING';
-            liveStatusIndicator.classList.remove('active');
-            playerOverlay.style.display = 'flex';
-        }
-    }
-    
-    function loadStream(platform) {
-        if (platform === 'youtube') {
-            videoContainer.innerHTML = `
-                <iframe
-                    src="https://www.youtube.com/embed/${config.youtubeEmbedId}?autoplay=1&rel=0"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                ></iframe>
-            `;
-        } else if (platform === 'facebook') {
-            videoContainer.innerHTML = `
-                <iframe
-                    src="${config.facebookEmbedUrl}"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                ></iframe>
-            `;
-        }
-    }
-    
-    function generateUpcomingStreams() {
-        upcomingStreamsList.innerHTML = '';
-        
-        config.upcomingStreams.forEach(stream => {
-            const streamCard = document.createElement('div');
-            streamCard.className = 'upcoming-stream-card';
-            streamCard.dataset.id = stream.id;
-            
-            streamCard.innerHTML = `
-                <div class="upcoming-stream-thumbnail">
-                    <img src="${stream.thumbnail}" alt="${stream.title}">
-                    <div class="upcoming-stream-date">${formatDate(stream.date)}</div>
-                </div>
-                <div class="upcoming-stream-info">
-                    <h4>${stream.title}</h4>
-                    <p>${stream.description}</p>
-                    <div class="upcoming-stream-time">
-                        <i class="fas fa-clock"></i>
-                        ${stream.time}
-                    </div>
-                </div>
-            `;
-            
-            upcomingStreamsList.appendChild(streamCard);
-        });
-    }
-    
-    function formatDate(dateStr) {
-        const date = new Date(dateStr);
-        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    }
+   // DOM Elements
+   const playerOverlay = document.getElementById('playerOverlay');
+   const videoContainer = document.getElementById('videoContainer');
+   const liveStatusIndicator = document.getElementById('liveStatusIndicator');
+   const liveStatusText = document.getElementById('liveStatusText');
+   const nextStreamTime = document.getElementById('nextStreamTime');
+   const streamTitle = document.getElementById('streamTitle');
+   const streamDescription = document.getElementById('streamDescription');
+   const setReminderBtn = document.getElementById('setReminderBtn');
+   const reminderModal = document.getElementById('reminderModal');
+   const closeReminderModal = document.getElementById('closeReminderModal');
+   const reminderForm = document.getElementById('reminderForm');
+   const watchOnYoutube = document.getElementById('watchOnYoutube');
+   const watchOnFacebook = document.getElementById('watchOnFacebook');
+   const shareStream = document.getElementById('shareStream');
+   const shareModal = document.getElementById('shareModal');
+   const closeShareModal = document.getElementById('closeShareModal');
+   const streamLinkInput = document.getElementById('streamLinkInput');
+   const copyLinkBtn = document.getElementById('copyLinkBtn');
+   const upcomingStreamsList = document.getElementById('upcomingStreamsList');
+   
+   // Initialize page
+   initPage();
+   
+   // Set up event listeners
+   setUpEventListeners();
+   
+   // Functions
+   function initPage() {
+       // Update with config data
+       streamTitle.textContent = config.streamTitle;
+       streamDescription.textContent = config.streamDescription;
+       nextStreamTime.textContent = config.nextStreamTime;
+       streamLinkInput.value = config.streamLink;
+       
+       // Update live status
+       updateLiveStatus();
+       
+       // Generate upcoming streams
+       generateUpcomingStreams();
+       
+       // If live, load the stream
+       if (config.isLive) {
+           loadStream(config.currentPlatform);
+       }
+   }
+   
+   function setUpEventListeners() {
+       // Reminder modal
+       setReminderBtn.addEventListener('click', function() {
+           reminderModal.classList.add('show');
+       });
+       
+       closeReminderModal.addEventListener('click', function() {
+           reminderModal.classList.remove('show');
+       });
+       
+       reminderForm.addEventListener('submit', function(e) {
+           e.preventDefault();
+           const email = document.getElementById('reminderEmail').value;
+           const phone = document.getElementById('reminderPhone').value;
+           const times = [...document.querySelectorAll('input[name="reminderTime"]:checked')]
+               .map(checkbox => checkbox.value);
+           
+           // This is where you would send the data to your backend
+           console.log('Setting reminder for:', email, phone, times);
+           
+           // Show confirmation
+           alert('Thank you! We\'ll remind you before the stream starts.');
+           
+           // Close modal
+           reminderModal.classList.remove('show');
+       });
+       
+       // Share modal
+       shareStream.addEventListener('click', function() {
+           shareModal.classList.add('show');
+       });
+       
+       closeShareModal.addEventListener('click', function() {
+           shareModal.classList.remove('show');
+       });
+       
+       // Copy link button
+       copyLinkBtn.addEventListener('click', function() {
+           streamLinkInput.select();
+           document.execCommand('copy');
+           this.textContent = 'Copied!';
+           
+           setTimeout(() => {
+               this.textContent = 'Copy';
+           }, 2000);
+       });
+       
+       // Platform buttons
+       watchOnYoutube.addEventListener('click', function() {
+           window.open(`https://www.youtube.com/watch?v=${config.youtubeEmbedId}`, '_blank');
+       });
+       
+       watchOnFacebook.addEventListener('click', function() {
+           window.open(`https://www.facebook.com/YourPage/videos/YOUR_VIDEO_ID/`, '_blank');
+       });
+       
+       // Share buttons
+       document.getElementById('shareFacebook').addEventListener('click', function(e) {
+           e.preventDefault();
+           window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(config.streamLink)}`, '_blank');
+       });
+       
+       document.getElementById('shareTwitter').addEventListener('click', function(e) {
+           e.preventDefault();
+           window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(config.streamLink)}&text=${encodeURIComponent('Join us for worship at Love World International USA!')}`, '_blank');
+       });
+       
+       document.getElementById('shareWhatsapp').addEventListener('click', function(e) {
+           e.preventDefault();
+           window.open(`https://wa.me/?text=${encodeURIComponent('Join us for worship at Love World International USA! ' + config.streamLink)}`, '_blank');
+       });
+       
+       document.getElementById('shareEmail').addEventListener('click', function(e) {
+           e.preventDefault();
+           window.location.href = `mailto:?subject=${encodeURIComponent('Join our Livestream Service')}&body=${encodeURIComponent('Join us for worship at Love World International USA!\n\n' + config.streamLink)}`;
+       });
+       
+       // Clicks on upcoming stream cards
+       document.addEventListener('click', function(e) {
+           if (e.target.closest('.upcoming-stream-card')) {
+               const card = e.target.closest('.upcoming-stream-card');
+               const streamId = card.dataset.id;
+               
+               // This could open details, set a reminder, etc.
+               setReminderBtn.click();
+           }
+       });
+   }
+   
+   function updateLiveStatus() {
+       if (config.isLive) {
+           liveStatusText.textContent = 'LIVE NOW';
+           liveStatusIndicator.classList.add('active');
+           playerOverlay.style.display = 'none';
+       } else {
+           liveStatusText.textContent = 'UPCOMING';
+           liveStatusIndicator.classList.remove('active');
+           playerOverlay.style.display = 'flex';
+       }
+   }
+   
+   function loadStream(platform) {
+       if (platform === 'youtube') {
+           videoContainer.innerHTML = `
+               <iframe
+                   src="https://www.youtube.com/embed/${config.youtubeEmbedId}?autoplay=1&rel=0"
+                   frameborder="0"
+                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                   allowfullscreen
+               ></iframe>
+           `;
+       } else if (platform === 'facebook') {
+           videoContainer.innerHTML = `
+               <iframe
+                   src="${config.facebookEmbedUrl}"
+                   frameborder="0"
+                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                   allowfullscreen
+               ></iframe>
+           `;
+       }
+   }
+   
+   function generateUpcomingStreams() {
+       upcomingStreamsList.innerHTML = '';
+       
+       config.upcomingStreams.forEach(stream => {
+           const streamCard = document.createElement('div');
+           streamCard.className = 'upcoming-stream-card';
+           streamCard.dataset.id = stream.id;
+           
+           streamCard.innerHTML = `
+               <div class="upcoming-stream-thumbnail">
+                   <img src="${stream.thumbnail}" alt="${stream.title}">
+                   <div class="upcoming-stream-date">${formatDate(stream.date)}</div>
+               </div>
+               <div class="upcoming-stream-info">
+                   <h4>${stream.title}</h4>
+                   <p>${stream.description}</p>
+                   <div class="upcoming-stream-time">
+                       <i class="fas fa-clock"></i>
+                       ${stream.time}
+                   </div>
+               </div>
+           `;
+           
+           upcomingStreamsList.appendChild(streamCard);
+       });
+   }
+   
+   function formatDate(dateStr) {
+       const date = new Date(dateStr);
+       return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+   }
 });
